@@ -136,7 +136,7 @@ $htmlBody = '<!DOCTYPE html>
         <!-- Footer -->
         <div style="text-align: center; color: #9ca3af; font-size: 12px;">
             <p style="margin: 0 0 8px;">Sent by IntellismartGroup.com</p>
-            <p style="margin: 0;">Questions? Email <a href="mailto:info@intellismartgroup.com" style="color: #6366f1;">info@intellismartgroup.com</a></p>
+            <p style="margin: 0;">Questions? Email <a href="mailto:pohm@intellismartgroup.com" style="color: #6366f1;">pohm@intellismartgroup.com</a></p>
         </div>
     </div>
 </body>
@@ -166,7 +166,7 @@ NEXT STEP:
 Book a free 15-minute strategy call to discuss your personalized AI roadmap.
 https://calendly.com/admin-intellismartco/30min
 
-Questions? Email info@intellismartgroup.com
+Questions? Email pohm@intellismartgroup.com
 
 Best,
 The Intellismart Group Team
@@ -178,7 +178,7 @@ logSubmission($input);
 
 // Send email with an internal BCC.
 $subject = "$company's AI Readiness Score: $score%";
-$result = sendEmail($email, $subject, $htmlBody, $textBody, 'info@intellismartgroup.com', 'info@intellismartgroup.com');
+$result = sendEmail($email, $subject, $htmlBody, $textBody, 'pohm@intellismartgroup.com', 'pohm@intellismartgroup.com');
 
 if ($result['success']) {
     echo json_encode(['success' => true, 'message' => 'Report sent successfully']);
