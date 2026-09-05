@@ -17,7 +17,7 @@ function sendEmail($to, $subject, $htmlBody, $textBody = '', $replyTo = '', $bcc
     $port = (int) envValue('SMTP_PORT', '587');
     $username = envValue('SMTP_USERNAME');
     $password = envValue('SMTP_PASSWORD');
-    $from = envValue('SMTP_FROM_EMAIL', 'info@intellismartgroup.com');
+    $from = envValue('SMTP_FROM_EMAIL', 'pohm@intellismartgroup.com');
     $fromName = envValue('SMTP_FROM_NAME', 'Intellismart Group');
 
     if (!$username || !$password) {
