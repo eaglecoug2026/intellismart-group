@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why Integrations Break After They Go Live | Intellismart Group</title>
+  <meta name="description" content="Why integrations break after launch: the hidden failure points, ownership gaps, and engineering practices that keep business workflows working well.">
+  <link rel="canonical" href="https://intellismartgroup.com/blog/why-integrations-break-after-they-go-live/">
+  <meta property="og:title" content="Why Integrations Break After They Go Live | Intellismart Group">
+  <meta property="og:description" content="Why integrations break after launch: the hidden failure points, ownership gaps, and engineering practices that keep business workflows working well.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://intellismartgroup.com/blog/why-integrations-break-after-they-go-live/">
+  <meta property="og:image" content="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/59cc803d-2e2a-4421-93b1-3a10c4effd97/workflows/be4ccda1-7c3e-4471-b2b8-55930c7763b2.webp">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css?v=20260924-blog-pages">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Why Integrations Break After They Go Live","description":"Why integrations break after launch: the hidden failure points, ownership gaps, and engineering practices that keep business workflows working well.","datePublished":"2026-09-12T01:51:38.101+00:00","image":"https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/59cc803d-2e2a-4421-93b1-3a10c4effd97/workflows/be4ccda1-7c3e-4471-b2b8-55930c7763b2.webp","url":"https://intellismartgroup.com/blog/why-integrations-break-after-they-go-live/","publisher":{"@type":"Organization","name":"Intellismart Group"}}</script>
+</head>
+<body>
+  <nav class="nav blog-nav">
+    <a class="logo" href="/">Intellismart Group</a>
+    <a class="back" href="/">Back to Home</a>
+  </nav>
+
+  <main class="blog-main">
+    <article class="blog-article" itemscope itemtype="https://schema.org/BlogPosting">
+      <a class="blog-back-link" href="/blog/">Back to blog</a>
+      <header class="blog-article-header">
+        <time datetime="2026-09-12T01:51:38.101+00:00" itemprop="datePublished">September 12, 2026</time>
+        <h1 itemprop="headline">Why Integrations Break After They Go Live</h1>
+        <p itemprop="description">Why integrations break after launch: the hidden failure points, ownership gaps, and engineering practices that keep business workflows working well.</p>
+      </header>
+      <img class="blog-article-image" src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/59cc803d-2e2a-4421-93b1-3a10c4effd97/workflows/be4ccda1-7c3e-4471-b2b8-55930c7763b2.webp" alt="Why Integrations Break After They Go Live" itemprop="image">
+      <div class="blog-article-content" itemprop="articleBody">
+<p>A sales order is created in Salesforce at 4:58 p.m. The integration is supposed to create the customer, invoice, and fulfillment record in NetSuite. It works during testing. Then a sales rep enters an unexpected billing address, a field mapping rejects the record, and finance discovers the problem three days later while reconciling invoices.</p>
+<p>That is why integrations break in the real world. The failure is rarely one dramatic technical event. More often, a workflow meets real operating behavior: incomplete data, changed permissions, revised business rules, an API limit, or a system update nobody planned for. The integration did exactly what it was built to do. It just was not built to handle what the business would eventually do.</p>
+<p>For operations leaders, the cost is not limited to a failed sync. It is duplicate entry, delayed billing, inaccurate reporting, missed handoffs, and staff quietly rebuilding manual workarounds. A system that cannot be trusted becomes another task to manage.</p>
+<h2>Why integrations break after launch</h2>
+<p>Most integrations fail because they are treated as a connection between two applications rather than a production business process. Connecting HubSpot to QuickBooks, Slack to a ticketing system, or a custom database to NetSuite is the easy part. Defining what should happen when records are late, duplicated, incomplete, changed, or rejected is the actual work.</p>
+<p>A dependable integration needs to account for the messy conditions that are normal in a growing business. Teams rename pipeline stages. Finance changes approval requirements. A vendor changes an API endpoint. An employee revokes a connected account's permissions. The order of events changes. If the system has no plan for these conditions, it does not fail gracefully. It fails silently or passes bad data downstream.</p>
+<p>The difference matters. A visible failure creates a ticket. Silent failures create false confidence, then become month-end cleanup, customer service issues, or decisions made from unreliable numbers.</p>
+<h3>The happy path got all the attention</h3>
+<p>Many projects are scoped around the primary path: a new lead becomes a customer, a paid invoice updates a CRM, or an approved request creates a record in an ERP. That path should work. But it is only one version of reality.</p>
+<p>What happens if the customer already exists under a slightly different company name? What happens if an order is edited after it has been sent to the ERP? What if a required tax field is blank, a record arrives twice, or the destination system is unavailable for twenty minutes?</p>
+<p>These are not edge cases in an active operation. They are expected cases. A production-grade build defines how to identify duplicates, retry temporary failures, hold exceptions for review, and preserve a clear audit trail. Without those controls, every exception becomes an investigation.</p>
+<h3>Source data is less clean than the workflow assumes</h3>
+<p>Integrations expose data quality problems that manual teams have been compensating for for years. A coordinator may know that “ACME West” and “Acme Western Division” are the same customer. Software does not know that unless someone defines the matching rules.</p>
+<p>The problem is especially common when CRM, accounting, ERP, and operational systems evolved separately. Each may use different IDs, naming conventions, currencies, date formats, ownership fields, or definitions of status. Moving information between them without a data contract creates confusion at scale.</p>
+<p>A data contract does not need to be academic. It should plainly state which system owns each field, what format is accepted, when it may be updated, and what happens when information conflicts. For example, Salesforce may own opportunity details, while NetSuite owns invoice status and payment terms. If both systems are allowed to overwrite the same field, the integration will eventually create a dispute between systems.</p>
+<h3>APIs, authentication, and limits change</h3>
+<p>Every cloud application is a moving dependency. Platforms release new versions, retire fields, tighten security requirements, and adjust rate limits. An API key expires. A connected employee leaves the company. A NetSuite role loses access after a security review. A workflow that ran reliably for months suddenly stops.</p>
+<p>This is not an argument against SaaS integrations. It is an argument for designing and supporting them as living systems. The right technical response depends on the platform and business risk. Some workflows need webhooks for immediate updates; others are better served by scheduled batch processing because it is easier to reconcile and less likely to overload an API.</p>
+<p>Real-time is not automatically better. If the business only needs updated financial data each morning, a scheduled process with reconciliation may be the more reliable and less expensive design. The requirement should drive the architecture, not the appeal of instant updates.</p>
+<h2>The ownership gap is where failures become expensive</h2>
+<p>An integration can have excellent code and still be operationally fragile if nobody owns it after launch. This is common with low-cost builds and internal automations assembled under deadline pressure. The original builder moves on, credentials are stored in a personal account, and no one knows which failure notifications matter.</p>
+<p>When the workflow breaks, operations assumes IT owns it, IT assumes finance changed something, and finance manually fixes the records. The company pays for the problem repeatedly because there is no accountable operating model.</p>
+<p>A supported integration should have a named owner, documented business rules, access managed through company-controlled accounts, and a clear process for changes. It also needs a practical answer to a basic question: who is watching it?</p>
+<p>Monitoring is not a dashboard that nobody checks. It means alerts for failed jobs, unusually low or high volumes, backlog growth, and repeated retries. It means logs that make it possible to see which record failed, why it failed, and what happened after a retry. For high-value workflows, it also means reconciliation: confirming that the number of records sent matches the number received and processed.</p>
+<p>That discipline prevents a one-record problem from becoming a 500-record cleanup project.</p>
+<h2>Change management is part of integration engineering</h2>
+<p>Business leaders sometimes hear “change management” and picture a slow enterprise committee. The practical version is simpler: before someone changes a field, a status, a form, an approval rule, or an application permission, they know which automations may be affected.</p>
+<p>A new sales stage in HubSpot can alter reporting logic. A new subsidiary in NetSuite can require tax and currency mappings. A revised intake form can send blank values into downstream systems. These changes are reasonable on their own. They become expensive when the integration has no test environment, no release process, and no person responsible for evaluating impact.</p>
+<p>For smaller teams, this can be lightweight. Maintain a change log, test material workflow changes before release, and treat credentials and schema changes as controlled events. For more complex organizations, use separate development and production environments, versioned deployment, and approval gates for financial or customer-facing processes.</p>
+<p>The level of control should match the cost of getting it wrong. An internal Slack notification does not need the same safeguards as a workflow that creates invoices or changes contract status.</p>
+<h2>What durable integrations do differently</h2>
+<p>Reliable systems are not built by assuming nothing will fail. They are built so normal failures are contained, visible, and recoverable. That starts with discovery that maps the current workflow, the systems involved, the people making exceptions, and the financial impact of delay or error.</p>
+<p>It continues with clear rules around field ownership, duplicate handling, timing, approvals, and exception queues. Then it requires testing with real-world scenarios, not just polished sample records. Teams should intentionally test a duplicate customer, a missing required value, a rejected API call, a delayed webhook, and a destination outage.</p>
+<p>After launch, the work shifts to <a href="https://intellismartgroup.com/blog.html">monitoring and support</a>. A 90-day warranty is useful because the first months reveal conditions that no workshop can fully predict. Ongoing support matters when the business changes faster than the original specification. Intellismart Group approaches automation this way because a workflow that works only during a demo does not reduce operational cost.</p>
+<p>There is also a commercial reason to build carefully. An integration should remove labor and software expense, not create a hidden maintenance job for your highest-paid employees. If the finance manager spends hours every week checking whether records synchronized, the promised ROI is already leaking.</p>
+<h2>Questions to ask before you approve an integration</h2>
+<p>Before approving a project, ask the builder to explain how the system handles failures, not only how it handles success. You should know where exceptions go, who receives alerts, how records are retried, and how the team reconciles source and destination data.</p>
+<p>Ask which system is the source of truth for every critical field. Ask whether credentials belong to the company or an individual. Ask how a future change to Salesforce, NetSuite, Microsoft 365, or another connected platform will be tested and deployed. If the answers are vague, the price may be low because the risk has been transferred to your team.</p>
+<p>Finally, measure reliability in business terms. Track failed transactions, time to detect issues, time to resolve them, manual exceptions per week, and hours saved. Those numbers show whether the automation is becoming an operating asset or simply hiding work until later.</p>
+<p>The best integration is not the one with the most apps connected. It is the one your team can trust when the order is urgent, the month is closing, and nobody has time to hunt through spreadsheets for what went wrong.</p>
+      </div>
+    </article>
+  </main>
+  <footer>© Intellismart Group</footer>
+</body>
+</html>
