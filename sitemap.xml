@@ -7,8 +7,63 @@
   </url>
   <url>
     <loc>https://intellismartgroup.com/blog/</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://intellismartgroup.com/blog/integration-partner-evaluation/</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://intellismartgroup.com/blog/how-to-calculate-automation-savings/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://intellismartgroup.com/blog/best-ai-automation-use-cases/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://intellismartgroup.com/blog/how-to-connect-netsuite-databases/</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://intellismartgroup.com/blog/netsuite-suitelet-versus-saved-searches-compared/</loc>
+    <lastmod>2026-10-06</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://intellismartgroup.com/blog/how-to-build-suitelet-dashboards/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://intellismartgroup.com/blog/best-operational-visibility-metrics/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://intellismartgroup.com/blog/ai-readiness-assessment-operations-teams/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://intellismartgroup.com/blog/how-to-reduce-duplicate-records/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://intellismartgroup.com/blog/netsuite-database-sync-example/</loc>
+    <lastmod>2026-09-26</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://intellismartgroup.com/blog/what-is-operational-automation/</loc>
+    <lastmod>2026-09-25</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://intellismartgroup.com/blog/design-reliable-workflow-alerts/</loc>
