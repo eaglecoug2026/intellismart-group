@@ -7,8 +7,13 @@
   </url>
   <url>
     <loc>https://intellismartgroup.com/blog/</loc>
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://intellismartgroup.com/blog/suitelet-reporting-example/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://intellismartgroup.com/blog/integration-partner-evaluation/</loc>
