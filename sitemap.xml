@@ -7,8 +7,13 @@
   </url>
   <url>
     <loc>https://intellismartgroup.com/blog/</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://intellismartgroup.com/blog/ai-agents-versus-workflows/</loc>
+    <lastmod>2026-10-20</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://intellismartgroup.com/blog/how-to-audit-saas-overlap/</loc>
