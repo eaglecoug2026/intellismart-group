@@ -7,8 +7,13 @@
   </url>
   <url>
     <loc>https://intellismartgroup.com/blog/</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://intellismartgroup.com/blog/can-ai-automate-financial-close/</loc>
+    <lastmod>2026-10-24</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://intellismartgroup.com/blog/integration-testing-checklist-reliable-automations/</loc>
