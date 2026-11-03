@@ -5,3 +5,6 @@ logs/
 *.log
 Thumbs.db
 .DS_Store
+
+# Blog writer dependencies (installed by the workflow)
+scripts/blog-writer/node_modules/
