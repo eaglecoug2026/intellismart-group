@@ -1,0 +1,86 @@
+name: Write a new blog article
+
+# Every two days Claude writes one new article for this site's blog
+# (scripts/blog-writer/write-article.mjs, guided by blog-content/brief.md and
+# blog-content/topics.md) and the blog pages are rebuilt.
+# While REVIEW_FIRST is "true" the article arrives as a pull request: merge it
+# to publish, close it to drop it. Set REVIEW_FIRST to "false" to publish
+# straight to main. A failed run emails the repo owner.
+on:
+  schedule:
+    - cron: "0 15 */2 * *"
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: "Topic to write about (blank = next in topics.md, or Claude picks)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: write-blog-article
+  cancel-in-progress: false
+
+env:
+  REVIEW_FIRST: "true"
+
+jobs:
+  write:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install the writer
+        run: npm ci --prefix scripts/blog-writer
+
+      - name: Write the article
+        id: write
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TOPIC: ${{ inputs.topic }}
+        run: node scripts/blog-writer/write-article.mjs >> "$GITHUB_OUTPUT"
+
+      - name: Rebuild the blog pages
+        run: node scripts/generate-blog.mjs
+
+      - name: Publish or open for review
+        id: publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SLUG: ${{ steps.write.outputs.slug }}
+          TITLE: ${{ steps.write.outputs.title }}
+          WORDS: ${{ steps.write.outputs.words }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A blog-content blog sitemap.xml
+          [ -f blog.html ] && git add blog.html
+          if [ "$REVIEW_FIRST" = "true" ]; then
+            git checkout -b "blog/$SLUG"
+            git commit -m "New blog article: $TITLE"
+            git push -u origin "blog/$SLUG"
+            gh pr create --base main --head "blog/$SLUG" \
+              --title "New blog article: $TITLE" \
+              --body "Claude wrote a new article ($WORDS words): **$TITLE**
+
+          Read it in \`blog-content/articles/$SLUG.json\` or the built page \`blog/$SLUG/index.html\`.
+
+          Merge to publish it on the site. Close to drop it."
+            echo "published=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "Publish blog article: $TITLE"
+            git push
+            echo "published=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Rebuild GitHub Pages
+        if: steps.publish.outputs.published == 'true' && hashFiles('CNAME') != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds"

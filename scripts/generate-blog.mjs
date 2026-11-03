@@ -1,10 +1,11 @@
-import { mkdir, rm, writeFile } from "node:fs/promises";
+// Builds the blog from the articles saved in blog-content/articles/:
+//   /blog/, /blog/<slug>/, the legacy blog.html redirect and /sitemap.xml
+// Run by .github/workflows/write-blog-article.yml after each new article.
+import { mkdir, readdir, readFile, rm, writeFile } from "node:fs/promises";
 
+const ARTICLES_DIR = "blog-content/articles";
 const SITE_URL = "https://intellismartgroup.com";
 const SITE_NAME = "Intellismart Group";
-const EMBED_URL = "https://app.trysoro.com/api/embed/df2257b4-1ed5-4927-95b0-ca75a68f9e04";
-const TOKEN = EMBED_URL.split("/").pop();
-const API_BASE = "https://app.trysoro.com";
 
 function escapeHtml(value = "") {
   return String(value)
@@ -173,39 +174,18 @@ ${articleUrls}
 `;
 }
 
-async function fetchText(url) {
-  const response = await fetch(url);
-  if (!response.ok) throw new Error(`Failed to fetch ${url}: ${response.status}`);
-  return response.text();
-}
-
-async function fetchJson(url) {
-  const response = await fetch(url);
-  if (!response.ok) throw new Error(`Failed to fetch ${url}: ${response.status}`);
-  return response.json();
-}
-
-function parseArticles(embedScript) {
-  const match = embedScript.match(/var SORO_ARTICLES = (\[[\s\S]*?\]);\n\s*var SORO_TOKEN/);
-  if (!match) throw new Error("Could not find SORO_ARTICLES in embed script");
-  return JSON.parse(match[1]);
-}
-
-const embedScript = await fetchText(EMBED_URL);
-const rawArticles = parseArticles(embedScript);
-const seenSlugs = new Set();
-const articles = rawArticles.filter((article) => {
-  if (seenSlugs.has(article.slug)) return false;
-  seenSlugs.add(article.slug);
-  return true;
-});
-
-for (const article of articles) {
-  if (!article.content) {
-    const detail = await fetchJson(`${API_BASE}/api/embed/${TOKEN}/article/${article.id}`);
-    article.content = detail.content || "";
+// Every article (archived from Soro, or written by scripts/blog-writer) is a
+// JSON file in blog-content/articles/. Newest first.
+async function loadArticles() {
+  const files = (await readdir(ARTICLES_DIR)).filter((f) => f.endsWith(".json"));
+  const articles = await Promise.all(files.map(async (f) => JSON.parse(await readFile(`${ARTICLES_DIR}/${f}`, "utf8"))));
+  for (const article of articles) {
+    if (article.image?.startsWith("/")) article.image = `${SITE_URL}${article.image}`;
   }
+  return articles.sort((a, b) => new Date(b.isoDate) - new Date(a.isoDate));
 }
+
+const articles = await loadArticles();
 
 await rm("blog", { recursive: true, force: true });
 await mkdir("blog", { recursive: true });

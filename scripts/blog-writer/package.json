@@ -1,0 +1,10 @@
+{
+  "name": "blog-writer",
+  "private": true,
+  "type": "module",
+  "description": "Writes one blog article with Claude; see write-article.mjs",
+  "dependencies": {
+    "@anthropic-ai/sdk": "1.4.0",
+    "zod": "4.6.7"
+  }
+}
