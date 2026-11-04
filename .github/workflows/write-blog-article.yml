@@ -2,7 +2,8 @@ name: Write a new blog article
 
 # Every two days Claude writes one new article for this site's blog
 # (scripts/blog-writer/write-article.mjs, guided by blog-content/brief.md and
-# blog-content/topics.md) and the blog pages are rebuilt.
+# blog-content/topics.md), OpenAI draws its cover picture
+# (blog-content/image-style.md), and the blog pages are rebuilt.
 # While REVIEW_FIRST is "true" the article arrives as a pull request: merge it
 # to publish, close it to drop it. Set REVIEW_FIRST to "false" to publish
 # straight to main. A failed run emails the repo owner.
@@ -43,6 +44,7 @@ jobs:
         id: write
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           TOPIC: ${{ inputs.topic }}
         run: node scripts/blog-writer/write-article.mjs >> "$GITHUB_OUTPUT"
 
@@ -59,7 +61,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A blog-content blog sitemap.xml
+          git add -A blog-content blog blog-images sitemap.xml
           [ -f blog.html ] && git add blog.html
           if [ "$REVIEW_FIRST" = "true" ]; then
             git checkout -b "blog/$SLUG"
