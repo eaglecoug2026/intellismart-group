@@ -23,6 +23,7 @@ import { makeCover } from "./cover-image.mjs";
 
 const ARTICLES_DIR = "blog-content/articles";
 const BRIEF_FILE = "blog-content/brief.md";
+const IMAGE_STYLE_FILE = "blog-content/image-style.md";
 const TOPICS_FILE = "blog-content/topics.md";
 const KEYWORDS_FILE = "blog-content/keywords.md";
 
@@ -34,7 +35,7 @@ const ARTICLE_RULES = `Article rules:
 - Don't repeat or closely overlap any existing article listed below.`;
 
 const KEYWORD_RULES = `Target keyword rules:
-- Use the target keyword word for word in the title, in the first paragraph, in at least one h2, and in the excerpt.
+- Use the target keyword in the title, in the first paragraph, in at least one h2, and in the excerpt: word for word, or with a small connecting word added so it reads as normal English (for example "business automation in Las Vegas").
 - Use it a few more times in the body where it reads naturally. Never stuff it or bend a sentence around it; close variations are fine.`;
 
 const Article = z.object({
@@ -44,7 +45,7 @@ const Article = z.object({
   slug: z.string().describe("lowercase-words-joined-by-hyphens, 3 to 7 words"),
   excerpt: z.string().describe("Meta description, 140 to 160 characters"),
   content_html: z.string(),
-  image_scene: z.string().describe("One or two sentences describing the cover picture: the people, objects and setting that show this article's subject. Nothing with readable text, logos or brand names."),
+  image_scene: z.string().describe("One or two sentences describing the cover picture's subject, in this site's cover picture style. Nothing with readable text, logos or brand names."),
 });
 
 async function readText(path) {
@@ -68,6 +69,11 @@ function cleanSlug(value) {
 
 const brief = (await readText(BRIEF_FILE)).trim();
 if (!brief) throw new Error(`${BRIEF_FILE} is missing`);
+
+const imageStyle = (await readText(IMAGE_STYLE_FILE)).trim();
+const pictureRules = imageStyle
+  ? `Cover picture style for this site (image_scene must fit it; don't add people, places or a look the style rules out):\n${imageStyle}`
+  : "";
 
 const articles = await existingArticles();
 const titles = articles.map((a) => `- ${a.title}`).join("\n") || "(none yet)";
@@ -100,7 +106,7 @@ const response = await client.messages.parse({
   model: "claude-opus-5-5",
   max_tokens: 16000,
   output_config: { effort: "high", format: zodOutputFormat(Article) },
-  system: `${brief}\n\n${ARTICLE_RULES}\n\n${KEYWORD_RULES}\n\nExisting articles on this site:\n${titles}`,
+  system: [brief, ARTICLE_RULES, KEYWORD_RULES, pictureRules, `Existing articles on this site:\n${titles}`].filter(Boolean).join("\n\n"),
   messages: [{ role: "user", content: ask }],
 });
 

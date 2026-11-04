@@ -24,7 +24,7 @@ export async function makeCover(slug, scene) {
   }
 
   const prompt = [
-    style,
+    style && `Draw the whole picture in this style, even where the scene below suggests otherwise:\n${style}`,
     `Scene: ${scene}`,
     "No text, words, letters, numbers, logos or brand marks anywhere in the picture, including on screens, papers and signs.",
   ].filter(Boolean).join("\n\n");
