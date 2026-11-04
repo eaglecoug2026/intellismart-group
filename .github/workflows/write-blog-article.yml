@@ -4,9 +4,9 @@ name: Write a new blog article
 # (scripts/blog-writer/write-article.mjs, guided by blog-content/brief.md and
 # blog-content/topics.md), OpenAI draws its cover picture
 # (blog-content/image-style.md), and the blog pages are rebuilt.
-# While REVIEW_FIRST is "true" the article arrives as a pull request: merge it
-# to publish, close it to drop it. Set REVIEW_FIRST to "false" to publish
-# straight to main. A failed run emails the repo owner.
+# With REVIEW_FIRST "false" (Peter, 11/4/2026) the article publishes straight
+# to main. Set it to "true" to get each one as a pull request instead: merge
+# it to publish, close it to drop it. A failed run emails the repo owner.
 on:
   schedule:
     - cron: "0 15 */2 * *"
@@ -20,13 +20,14 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  pages: write
 
 concurrency:
   group: write-blog-article
   cancel-in-progress: false
 
 env:
-  REVIEW_FIRST: "true"
+  REVIEW_FIRST: "false"
 
 jobs:
   write:
