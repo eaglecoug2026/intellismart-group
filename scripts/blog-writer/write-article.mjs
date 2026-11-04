@@ -10,12 +10,16 @@
 // the first one no article has used yet (with a queued topic, the unused one
 // that fits it best). Once every keyword is used, they come round again.
 //
+// Picture: cover-image.mjs draws a cover in the style of
+// blog-content/image-style.md when OPENAI_API_KEY is set.
+//
 // Run from the site root: node scripts/blog-writer/write-article.mjs
 // Prints slug=... and title=... lines for $GITHUB_OUTPUT.
 import { mkdir, readdir, readFile, writeFile } from "node:fs/promises";
 import Anthropic from "@anthropic-ai/sdk";
 import { z } from "zod";
 import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
+import { makeCover } from "./cover-image.mjs";
 
 const ARTICLES_DIR = "blog-content/articles";
 const BRIEF_FILE = "blog-content/brief.md";
@@ -40,6 +44,7 @@ const Article = z.object({
   slug: z.string().describe("lowercase-words-joined-by-hyphens, 3 to 7 words"),
   excerpt: z.string().describe("Meta description, 140 to 160 characters"),
   content_html: z.string(),
+  image_scene: z.string().describe("One or two sentences describing the cover picture: the people, objects and setting that show this article's subject. Nothing with readable text, logos or brand names."),
 });
 
 async function readText(path) {
@@ -116,7 +121,7 @@ const article = {
   excerpt: out.excerpt,
   date: now.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "America/Los_Angeles" }),
   isoDate: now.toISOString(),
-  image: null,
+  image: await makeCover(slug, out.image_scene),
   content: out.content_html,
   topic: out.topic,
   keyword: out.keyword,
@@ -141,3 +146,4 @@ console.log(`slug=${slug}`);
 console.log(`title=${article.title.replace(/\n/g, " ")}`);
 console.log(`words=${words}`);
 console.log(`keyword=${out.keyword.replace(/\n/g, " ")}`);
+console.log(`picture=${article.image ? "yes" : "no"}`);
