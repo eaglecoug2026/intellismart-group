@@ -1538,6 +1538,24 @@ CHANGELOG — Intellismart Group Website v6
       line-height: 1.65;
       color: var(--text-secondary);
     }
+    .demos-more {
+      margin-top: 48px;
+      text-align: center;
+    }
+    .demos-more a {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--text-primary);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 4px;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+    .demos-more a:hover {
+      color: var(--accent);
+      border-color: var(--text-primary);
+    }
     @media (max-width: 860px) {
       .demos-section { padding: 80px 0; }
       .demos-grid { grid-template-columns: 1fr; gap: 36px; margin-top: 40px; }
@@ -1817,7 +1835,7 @@ CHANGELOG — Intellismart Group Website v6
   <nav class="nav">
     <a href="/" class="nav-logo">Intellismart Group</a>
     <div class="nav-links" id="navLinks">
-      <a href="#demos" onclick="closeNav()">Demos</a>
+      <a href="/demos/" onclick="closeNav()">Demos</a>
       <a href="#casestudy" onclick="closeNav()">Results</a>
       <a href="blog.html" onclick="closeNav()">Blog</a>
     </div>
@@ -1887,6 +1905,21 @@ CHANGELOG — Intellismart Group Website v6
             <p class="demo-desc">Carrier invoices matched line by line against payroll deductions and enrollment, with every discrepancy flagged before it gets paid.</p>
           </div>
         </article>
+
+        <article class="demo-card fade-up fade-up-d2">
+          <button class="demo-frame" type="button" aria-label="Play video: Construction Project Management System" onclick="playDemo(this, 'GE0eo0JL9y8', 'Construction Project Management System')">
+            <img src="https://i.ytimg.com/vi/GE0eo0JL9y8/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/GE0eo0JL9y8/hqdefault.jpg'" alt="Custom-built construction project management system walkthrough" loading="lazy" width="1280" height="720">
+            <span class="demo-play"></span>
+          </button>
+          <div class="demo-body">
+            <div class="demo-tag">Construction</div>
+            <h3 class="demo-title">Construction Project Management System</h3>
+            <p class="demo-desc">A complete construction project management platform we built ourselves &mdash; our own database, our own application, no off-the-shelf tool underneath it.</p>
+          </div>
+        </article>
+      </div>
+      <div class="demos-more reveal">
+        <a href="/demos/">See all demos &rarr;</a>
       </div>
     </div>
   </section>
@@ -2057,7 +2090,7 @@ CHANGELOG — Intellismart Group Website v6
           <a href="#proof">The Proof</a>
           <a href="#how">Process</a>
           <a href="#services">Services</a>
-          <a href="#demos">Demos</a>
+          <a href="/demos/">Demos</a>
           <a href="blog.html">Blog</a>
         </div>
         <div class="footer-col">
