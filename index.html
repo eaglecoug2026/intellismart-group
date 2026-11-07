@@ -1442,6 +1442,109 @@ CHANGELOG — Intellismart Group Website v6
       .casestudy-stats { flex-wrap: wrap; gap: 24px; }
     }
 
+    /* ═══ DEMOS ═══ */
+    .demos-section {
+      padding: 120px 0;
+      background: var(--warm-beige);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .demos-intro {
+      max-width: 660px;
+      margin-top: 20px;
+      font-size: 18px;
+      color: var(--text-secondary);
+    }
+    .demos-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 48px;
+      margin-top: 56px;
+    }
+    .demo-card {
+      border: 1px solid var(--border);
+      background: var(--white);
+    }
+    .demo-frame {
+      position: relative;
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      padding: 0;
+      border: 0;
+      border-bottom: 1px solid var(--border);
+      background: var(--text-primary);
+      cursor: pointer;
+      overflow: hidden;
+    }
+    .demo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.4s ease;
+    }
+    .demo-frame:hover img { transform: scale(1.04); opacity: 0.82; }
+    .demo-frame iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+    .demo-frame:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+    .demo-play {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), background 0.3s ease;
+    }
+    .demo-frame:hover .demo-play { transform: translate(-50%, -50%) scale(1.1); background: var(--text-primary); }
+    .demo-play::after {
+      content: '';
+      display: block;
+      margin-left: 6px;
+      border-left: 20px solid var(--white);
+      border-top: 12px solid transparent;
+      border-bottom: 12px solid transparent;
+    }
+    .demo-body { padding: 28px 32px 32px; }
+    .demo-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .demo-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: 28px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+    .demo-desc {
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--text-secondary);
+    }
+    @media (max-width: 860px) {
+      .demos-section { padding: 80px 0; }
+      .demos-grid { grid-template-columns: 1fr; gap: 36px; margin-top: 40px; }
+      .demo-body { padding: 24px; }
+      .demo-title { font-size: 24px; }
+      .demo-play { width: 58px; height: 58px; }
+      .demo-play::after { border-left-width: 16px; border-top-width: 10px; border-bottom-width: 10px; }
+    }
+
     /* ═══ FAQ ═══ */
     .faq-section {
       padding: 160px 0;
@@ -1714,6 +1817,7 @@ CHANGELOG — Intellismart Group Website v6
   <nav class="nav">
     <a href="#" class="nav-logo">Intellismart Group</a>
     <div class="nav-links" id="navLinks">
+      <a href="#demos" onclick="closeNav()">Demos</a>
       <a href="#casestudy" onclick="closeNav()">Results</a>
       <a href="blog.html" onclick="closeNav()">Blog</a>
     </div>
@@ -1757,6 +1861,42 @@ CHANGELOG — Intellismart Group Website v6
     </div>
   </section>
 
+
+  <!-- DEMOS -->
+  <section class="demos-section" id="demos">
+    <div class="container">
+      <div class="services-header">
+        <div class="label reveal">See It Run</div>
+        <h2 class="display-2 reveal reveal-delay-1">Automations in Action</h2>
+        <p class="demos-intro reveal reveal-delay-2">Real systems we built, running on real workflows. No slides, no mockups — just the finished automation doing the work.</p>
+      </div>
+      <div class="demos-grid">
+        <article class="demo-card fade-up">
+          <button class="demo-frame" type="button" aria-label="Play video: Bank Reconciliation &amp; Cash Flow Reporting" onclick="playDemo(this, '9E8LpGRkNYc', 'Bank Reconciliation and Cash Flow Reporting')">
+            <img src="https://i.ytimg.com/vi/9E8LpGRkNYc/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/9E8LpGRkNYc/hqdefault.jpg'" alt="Bank reconciliation and cash flow reporting automation walkthrough" loading="lazy" width="1280" height="720">
+            <span class="demo-play"></span>
+          </button>
+          <div class="demo-body">
+            <div class="demo-tag">Accounting</div>
+            <h3 class="demo-title">Bank Reconciliation &amp; Cash Flow Reporting</h3>
+            <p class="demo-desc">Transactions matched and the period reconciled automatically, then a cash flow report built straight off the result — no manual tick-and-tie.</p>
+          </div>
+        </article>
+
+        <article class="demo-card fade-up fade-up-d1">
+          <button class="demo-frame" type="button" aria-label="Play video: Health Benefits Reconciliation" onclick="playDemo(this, '6CqrJLuzOtc', 'Health Benefits Reconciliation')">
+            <img src="https://i.ytimg.com/vi/6CqrJLuzOtc/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/6CqrJLuzOtc/hqdefault.jpg'" alt="Health benefits reconciliation automation walkthrough" loading="lazy" width="1280" height="720">
+            <span class="demo-play"></span>
+          </button>
+          <div class="demo-body">
+            <div class="demo-tag">Benefits &amp; Payroll</div>
+            <h3 class="demo-title">Health Benefits Reconciliation</h3>
+            <p class="demo-desc">Carrier invoices matched line by line against payroll deductions and enrollment, with every discrepancy flagged before it gets paid.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
   <!-- CASE STUDY -->
   <section class="casestudy-section" id="casestudy">
@@ -1924,6 +2064,7 @@ CHANGELOG — Intellismart Group Website v6
           <a href="#proof">The Proof</a>
           <a href="#how">Process</a>
           <a href="#services">Services</a>
+          <a href="#demos">Demos</a>
           <a href="blog.html">Blog</a>
         </div>
         <div class="footer-col">
@@ -2338,6 +2479,20 @@ function toggleNav() {
   document.getElementById('navLinks').classList.toggle('open');
   document.getElementById('navOverlay').classList.toggle('open');
 }
+// — Demos: swap the poster for the YouTube player only on click (keeps the page light)
+function playDemo(el, id, title) {
+  if (el.dataset.loaded) return;
+  el.dataset.loaded = '1';
+  var f = document.createElement('iframe');
+  f.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1';
+  f.title = title;
+  f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+  f.allowFullscreen = true;
+  el.innerHTML = '';
+  el.appendChild(f);
+  el.style.cursor = 'default';
+}
+
 function closeNav() {
   document.getElementById('navToggle').classList.remove('open');
   document.getElementById('navLinks').classList.remove('open');
