@@ -299,6 +299,7 @@ CHANGELOG — Intellismart Group Website v6
       transition: all 0.2s;
       cursor: pointer;
       border: none;
+      font-family: 'Inter', -apple-system, sans-serif;
     }
 
     .btn-primary {
@@ -1808,8 +1809,6 @@ CHANGELOG — Intellismart Group Website v6
     .count-up-d1 { transition-delay: 0.3s; }
     .count-up-d2 { transition-delay: 0.8s; }
   </style>
-  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </head>
 <body>
 
@@ -1837,7 +1836,7 @@ CHANGELOG — Intellismart Group Website v6
       </h1>
       <p class="hero-body" id="heroBody" style="opacity:0;transform:translateY(20px);transition:all 0.8s cubic-bezier(0.23,1,0.32,1)">From readiness assessments to full-scale implementation, Intellismart Group bridges the gap between where your business is and where AI can take it.</p>
       <div class="hero-cta" id="heroCTA" style="opacity:0;transform:translateY(20px);transition:all 0.8s cubic-bezier(0.23,1,0.32,1)">
-        <a href="javascript:void(0)" onclick="Calendly.initPopupWidget({url:'https://calendly.com/admin-intellismartco/30min'});return false;" class="btn btn-outline">Book Free Audit</a>
+        <button type="button" class="btn btn-outline" onclick="startAudit()">Start Free AI Audit</button>
       </div>
     </div>
   </section>
@@ -2302,10 +2301,9 @@ function showAResults(){
       <!-- CTA -->
       <div style="padding:48px;border:1px solid var(--border);text-align:center;margin-bottom:24px;background:rgba(51,51,52,0.02)">
         <h3 style="font-family:'Instrument Serif',serif;font-size:28px;margin-bottom:8px">See what these numbers mean for ${aLead.company}</h3>
-        <p style="color:var(--text-secondary);margin-bottom:28px;font-size:15px">Free 30-minute strategy call. We'll walk through your report and identify the highest-ROI automations.</p>
+        <p style="color:var(--text-secondary);margin-bottom:28px;font-size:15px">Send us a note and we'll set up a free 30-minute call to walk through your report and identify the highest-ROI automations.</p>
         <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-          <a href="javascript:void(0)" onclick="Calendly.initPopupWidget({url:'https://calendly.com/admin-intellismartco/30min'});return false;" class="btn btn-primary">Book Free Strategy Call</a>
-          <a href="mailto:pohm@intellismartgroup.com" class="btn btn-outline">Email Us</a>
+          <a href="mailto:pohm@intellismartgroup.com?subject=${encodeURIComponent('Strategy call request — ' + aLead.company)}" class="btn btn-primary">Request Your Strategy Call</a>
         </div>
       </div>
 
