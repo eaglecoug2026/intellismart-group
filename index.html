@@ -381,12 +381,6 @@ CHANGELOG — Intellismart Group Website v6
       .hero-graphic { display: none; }
     }
 
-    /* ═══ HERO VIDEO ═══ */
-    .hero-video {
-      padding: 60px 20px 80px;
-      background: var(--cream);
-    }
-
     /* ═══ EXPANDING SECTION ═══ */
     .section-expand {
       position: relative;
@@ -1205,13 +1199,20 @@ CHANGELOG — Intellismart Group Website v6
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      background: var(--cream);
     }
 
     .assess-logo {
       font-family: 'Instrument Serif', serif;
       font-size: 22px;
       color: var(--text-primary);
+      text-decoration: none;
     }
+    .assess-logo:hover { color: var(--accent); }
+
 
     .assess-close {
       width: 36px;
@@ -1814,7 +1815,7 @@ CHANGELOG — Intellismart Group Website v6
 
   <!-- NAV -->
   <nav class="nav">
-    <a href="#" class="nav-logo">Intellismart Group</a>
+    <a href="/" class="nav-logo">Intellismart Group</a>
     <div class="nav-links" id="navLinks">
       <a href="#demos" onclick="closeNav()">Demos</a>
       <a href="#casestudy" onclick="closeNav()">Results</a>
@@ -1838,13 +1839,6 @@ CHANGELOG — Intellismart Group Website v6
       <div class="hero-cta" id="heroCTA" style="opacity:0;transform:translateY(20px);transition:all 0.8s cubic-bezier(0.23,1,0.32,1)">
         <button type="button" class="btn btn-outline" onclick="startAudit()">Start Free AI Audit</button>
       </div>
-    </div>
-  </section>
-
-  <!-- HERO VIDEO -->
-  <section class="hero-video">
-    <div style="position: relative; width: 100%; max-width: 360px; margin: 0 auto; padding-bottom: 640px; border-radius: 12px; overflow: hidden;">
-      <iframe src="https://www.youtube.com/embed/7KSPmtFCnZU" title="Intellismart Group" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
     </div>
   </section>
 
@@ -2082,7 +2076,7 @@ CHANGELOG — Intellismart Group Website v6
 <div id="assessment">
   <div class="assess-inner">
     <div class="assess-top">
-      <div class="assess-logo">Intellismart Group</div>
+      <a class="assess-logo" href="/">Intellismart Group</a>
       <button class="assess-close" onclick="closeAudit()">✕</button>
     </div>
     <div class="assess-progress"><div class="assess-progress-fill" id="aProgress" style="width:0%"></div></div>
