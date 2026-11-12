@@ -16,8 +16,8 @@ CHANGELOG — Intellismart Group Website v6
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Intellismart Group — AI Automation for US Businesses | Las Vegas, NV</title>
-  <meta name="description" content="AI automation consultancy based in Las Vegas, NV. We eliminate manual workflows for US businesses.">
+  <title>AI Automation, ERP Integration &amp; Accounting Workflows | Intellismart Group</title>
+  <meta name="description" content="We build custom AI automations, financial workflows, NetSuite and ERP integrations, and internal business apps that cut costs and remove manual work. Free automation assessment.">
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
@@ -60,10 +60,14 @@ CHANGELOG — Intellismart Group Website v6
       line-height: 1.08;
     }
 
-    .display-hero { 
-      font-size: clamp(48px, 10vw, 120px); 
-      line-height: 1.0;
+    .display-hero {
+      font-size: clamp(36px, 6vw, 76px);
+      line-height: 1.05;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
     }
+    @media (max-width: 700px) { .hero-br { display: none; } }
     .display-1 { font-size: clamp(40px, 7vw, 86px); }
     .display-2 { font-size: clamp(32px, 5vw, 64px); }
     .display-3 { font-size: clamp(28px, 4vw, 48px); }
@@ -1850,12 +1854,13 @@ CHANGELOG — Intellismart Group Website v6
     <!-- hero graphic removed -->
     <div class="hero-content">
       <h1 class="display-hero" id="heroTitle">
-        <span class="hw">Your</span> <span class="hw">Business</span> <span class="hw">Runs</span> <span class="hw">on</span> <span class="hw">Decisions.</span><br>
-        <span class="hw">Let</span> <span class="hw">AI</span> <span class="hw">Make</span> <span class="hw">Them</span> <span class="hw hw-hl" id="heroUL">Smarter</span>
+        <span class="hw">AI</span> <span class="hw">Automation</span> <span class="hw">That</span> <span class="hw">Cuts</span> <span class="hw hw-hl" id="heroUL">Costs</span><span class="hw">,</span><br class="hero-br">
+        <span class="hw">Eliminates</span> <span class="hw">Manual</span> <span class="hw">Work,</span> <span class="hw">and</span> <span class="hw">Connects</span> <span class="hw">Your</span> <span class="hw">Business</span> <span class="hw">Systems</span>
       </h1>
-      <p class="hero-body" id="heroBody" style="opacity:0;transform:translateY(20px);transition:all 0.8s cubic-bezier(0.23,1,0.32,1)">From readiness assessments to full-scale implementation, Intellismart Group bridges the gap between where your business is and where AI can take it.</p>
+      <p class="hero-body" id="heroBody" style="opacity:0;transform:translateY(20px);transition:all 0.8s cubic-bezier(0.23,1,0.32,1)">We build custom AI automations, financial workflows, ERP integrations, and internal business applications that save time, reduce errors, and improve operations.</p>
       <div class="hero-cta" id="heroCTA" style="opacity:0;transform:translateY(20px);transition:all 0.8s cubic-bezier(0.23,1,0.32,1)">
-        <button type="button" class="btn btn-outline" onclick="startAudit()">Start Free AI Audit</button>
+        <button type="button" class="btn btn-primary" onclick="startAudit()">Get a Free Automation Assessment</button>
+        <a class="btn btn-outline" href="/demos/">Watch Real Demos</a>
       </div>
     </div>
   </section>
