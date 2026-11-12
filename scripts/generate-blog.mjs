@@ -170,6 +170,11 @@ function sitemap(articles) {
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>${SITE_URL}/demos/</loc>
+    <lastmod>2026-11-12</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>${SITE_URL}/blog/</loc>
     <lastmod>${isoDay(articles[0]?.isoDate) || "2026-09-24"}</lastmod>
     <priority>0.8</priority>
