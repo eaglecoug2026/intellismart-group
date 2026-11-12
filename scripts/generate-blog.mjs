@@ -34,7 +34,7 @@ function layout({ title, description, canonical, body, image, ogType = "website"
   <meta property="og:url" content="${canonical}">
   <meta property="og:image" content="${image || `${SITE_URL}/images/intellismart-og.png`}">
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=20260924-blog-pages">
+  <link rel="stylesheet" href="/styles.css?v=20261111-assessment">
   ${jsonLd ? `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>` : ""}
 </head>
 <body>
@@ -114,6 +114,11 @@ function articlePage(article) {
       <div class="blog-article-content" itemprop="articleBody">
 ${article.content || ""}
       </div>
+      <aside class="blog-cta">
+        <h2>See what automation could save your business</h2>
+        <p>Request a free Business Automation Opportunity Assessment. Tell us about one process and we'll send you your top three automation opportunities, the hours and costs they could save, and a recommended approach with a preliminary cost range.</p>
+        <a class="blog-cta-button" href="/?from=${encodeURIComponent(`blog/${article.slug}`)}#assessment">Request your free assessment</a>
+      </aside>
     </article>
   </main>`,
     jsonLd: {
