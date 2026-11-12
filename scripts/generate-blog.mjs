@@ -93,6 +93,26 @@ ${cards}
   });
 }
 
+// Articles about the close, reconciliations and AP link to the accounting automation page.
+const ACCOUNTING_ARTICLES = new Set([
+  "top-automation-opportunities-finance-teams", "automation-accounting-monthly-close",
+  "fully-automate-monthly-close-without-risk", "can-ai-automate-financial-close",
+  "automating-bank-recs", "sync-cash-flow-reports", "reduce-manual-invoice-processing",
+  "ai-document-data-extraction-in-practice", "how-to-streamline-purchase-approvals",
+  "automate-sales-commission-calculations", "quickbooks-workflow-automation-that-actually-holds-up",
+  "how-to-calculate-automation-savings",
+]);
+
+function serviceLink(article) {
+  if (isNetSuiteArticle(article)) {
+    return `<p class="blog-cta-more">Working in NetSuite? <a href="/netsuite-integration/">See our NetSuite integration services</a>.</p>`;
+  }
+  if (ACCOUNTING_ARTICLES.has(article.slug)) {
+    return `<p class="blog-cta-more">Automating your close? <a href="/accounting-automation/">See our accounting automation services</a>.</p>`;
+  }
+  return "";
+}
+
 // Articles about NetSuite or ERP work link to the NetSuite integration service page.
 function isNetSuiteArticle(article) {
   return /netsuite|suitelet|\berp\b/i.test(`${article.slug} ${article.title} ${article.keyword || ""}`);
@@ -123,7 +143,7 @@ ${article.content || ""}
         <h2>See what automation could save your business</h2>
         <p>Request a free Business Automation Opportunity Assessment. Tell us about one process and we'll send you your top three automation opportunities, the hours and costs they could save, and a recommended approach with a preliminary cost range.</p>
         <a class="blog-cta-button" href="/?from=${encodeURIComponent(`blog/${article.slug}`)}#assessment">Request your free assessment</a>
-        ${isNetSuiteArticle(article) ? `<p class="blog-cta-more">Working in NetSuite? <a href="/netsuite-integration/">See our NetSuite integration services</a>.</p>` : ""}
+        ${serviceLink(article)}
       </aside>
     </article>
   </main>`,
@@ -177,6 +197,11 @@ function sitemap(articles) {
   </url>
   <url>
     <loc>${SITE_URL}/netsuite-integration/</loc>
+    <lastmod>2026-11-12</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>${SITE_URL}/accounting-automation/</loc>
     <lastmod>2026-11-12</lastmod>
     <priority>0.9</priority>
   </url>
