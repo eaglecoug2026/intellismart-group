@@ -1237,88 +1237,12 @@ CHANGELOG — Intellismart Group Website v6
       color: var(--text-primary);
     }
 
-    .assess-progress {
-      height: 3px;
-      background: var(--border);
-      margin-top: 20px;
-    }
-
-    .assess-progress-fill {
-      height: 100%;
-      background: #8B7D6B;
-      transition: width 0.5s;
-    }
-
     .assess-body {
       flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 48px 0;
-    }
-
-    .assess-q-num {
-      font-size: 12px;
-      color: #8B7D6B;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      margin-bottom: 12px;
-    }
-
-    .assess-q-text {
-      font-family: 'Instrument Serif', serif;
-      font-size: 32px;
-      color: var(--text-primary);
-      margin-bottom: 40px;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-    }
-
-    .assess-option {
-      display: block;
-      width: 100%;
-      padding: 20px 24px;
-      margin-bottom: 10px;
-      border: 1px solid var(--border);
-      background: var(--white);
-      text-align: left;
-      font-size: 16px;
-      color: var(--text-body);
-      cursor: pointer;
-      transition: all 0.2s;
-      font-family: 'Inter', sans-serif;
-    }
-
-    .assess-option:hover {
-      border-color: #8B7D6B;
-      background: rgba(139, 125, 107, 0.05);
-    }
-
-    .assess-option.selected {
-      border-color: #4A6B5D;
-      background: rgba(74,107,93,0.08);
-    }
-
-    .assess-option strong {
-      color: var(--text-muted);
-      margin-right: 12px;
-    }
-
-    .assess-back {
-      margin-top: 20px;
-      padding: 12px 24px;
-      background: none;
-      border: 1px solid var(--border);
-      cursor: pointer;
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      color: var(--text-muted);
-      transition: all 0.2s;
-    }
-
-    .assess-back:hover {
-      border-color: var(--text-primary);
-      color: var(--text-primary);
     }
 
     .gate-input {
@@ -1359,39 +1283,35 @@ CHANGELOG — Intellismart Group Website v6
     .gate-submit.active:hover {
       background: #8B7D6B;
     }
+    .gate-submit:disabled { opacity: 0.6; cursor: wait; }
 
-    .score-ring {
-      position: relative;
-      width: 180px;
-      height: 180px;
-      margin: 0 auto 24px;
-    }
-
-    .score-ring svg { transform: rotate(-90deg); }
-    .score-ring circle { fill: none; stroke-width: 8; }
-    .score-ring .bg { stroke: var(--border); }
-    .score-ring .fg { stroke-linecap: round; transition: stroke-dashoffset 1.4s; }
-
-    .score-num {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-family: 'Instrument Serif', serif;
-      font-size: 56px;
-      color: var(--text-primary);
-    }
-
-    .spinner {
-      width: 40px;
-      height: 40px;
-      border: 2px solid var(--border);
-      border-top-color: #8B7D6B;
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-    }
-
-    @keyframes spin { to { transform: rotate(360deg); } }
+    /* Free assessment form */
+    .offer { width: 100%; max-width: 560px; }
+    .offer-label { font-size: 13px; font-weight: 600; color: #8B7D6B; margin-bottom: 12px; }
+    .offer-title { font-family: 'Instrument Serif', serif; font-size: clamp(30px, 5vw, 40px); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 16px; }
+    .offer-lead { font-size: 17px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 20px; }
+    .offer-list { list-style: none; padding: 0; margin: 0 0 36px; border-top: 1px solid var(--border); }
+    .offer-list li { padding: 14px 0 14px 22px; border-bottom: 1px solid var(--border); position: relative; font-size: 15px; line-height: 1.55; color: var(--text-secondary); }
+    .offer-list li::before { content: ''; position: absolute; left: 0; top: 23px; width: 10px; height: 2px; background: #8B7D6B; }
+    .offer-list strong { color: var(--text-primary); }
+    .offer-field { display: block; margin-bottom: 18px; }
+    .offer-field > span { display: block; font-size: 14px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px; }
+    .offer-field .gate-input { margin-bottom: 0; }
+    .offer-text { resize: vertical; min-height: 110px; line-height: 1.5; }
+    .offer-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+    .offer-chip input { position: absolute; opacity: 0; pointer-events: none; }
+    .offer-chip span { display: inline-block; padding: 9px 14px; border: 1px solid var(--border); background: var(--white); font-size: 14px; cursor: pointer; transition: all 0.15s; }
+    .offer-chip input:checked + span { border-color: var(--text-primary); background: var(--text-primary); color: var(--white); }
+    .offer-chip input:focus-visible + span { outline: 2px solid #8B7D6B; outline-offset: 2px; }
+    .offer-check { display: flex; gap: 10px; align-items: center; font-size: 15px; color: var(--text-primary); margin: 4px 0 22px; cursor: pointer; }
+    .offer-check input { width: 18px; height: 18px; accent-color: var(--text-primary); }
+    .offer-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+    .offer-error { color: #8B3A3A; font-size: 14px; margin-top: 12px; min-height: 1px; }
+    .offer-error a { color: inherit; }
+    .offer-fine { font-size: 13px; color: var(--text-muted); margin-top: 8px; }
+    .offer-alt { font-size: 15px; color: var(--text-secondary); margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); }
+    .offer-alt a { color: var(--text-primary); font-weight: 600; }
+    #assessment .assess-body { align-items: flex-start; }
 
     /* ═══ CASE STUDY ═══ */
     .casestudy-section {
@@ -2018,7 +1938,7 @@ CHANGELOG — Intellismart Group Website v6
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
-            <div class="faq-answer-inner">Three tiers: <strong>Starter Sprint</strong>, <strong>Growth</strong>, and <strong>Full Operations</strong>. Every engagement is scoped to your business — book a call and we'll give you a transparent quote. We're not the cheapest — we're the one that works six months from now.</div>
+            <div class="faq-answer-inner">Three tiers: <strong>Starter Sprint</strong>, <strong>Growth</strong>, and <strong>Full Operations</strong>. Every engagement is scoped to your business — <a href="https://calendly.com/pohm-intellismartgroup/30min" target="_blank" rel="noopener" style="color:#4A6B5D;font-weight:600">book a call</a> and we'll give you a transparent quote. We're not the cheapest — we're the one that works six months from now.</div>
           </div>
         </div>
         <div class="faq-item fade-up" style="transition-delay:0.15s">
@@ -2036,7 +1956,7 @@ CHANGELOG — Intellismart Group Website v6
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
-            <div class="faq-answer-inner">Most automations live within <strong>2–4 weeks</strong>. Complex integrations 6–8 weeks. Specific timeline in your free audit — no vague estimates.</div>
+            <div class="faq-answer-inner">Most automations live within <strong>2–4 weeks</strong>. Complex integrations 6–8 weeks. Specific timeline in your free assessment — no vague estimates.</div>
           </div>
         </div>
         <div class="faq-item fade-up" style="transition-delay:0.45s">
@@ -2117,259 +2037,116 @@ CHANGELOG — Intellismart Group Website v6
       <a class="assess-logo" href="/">Intellismart Group</a>
       <button class="assess-close" onclick="closeAudit()">✕</button>
     </div>
-    <div class="assess-progress"><div class="assess-progress-fill" id="aProgress" style="width:0%"></div></div>
     <div class="assess-body" id="aBody"></div>
   </div>
 </div>
 
 <script>
-// ═══ ASSESSMENT ═══
-const QUESTIONS = [
-  {q:'What AI tools does your team use?',cat:'AI Tools',multi:true,o:['None','ChatGPT','Claude','Google Gemini','Microsoft Copilot','Grok','Other']},
-  {q:'Do you use basic AI modes, or more advanced models such as code, vision, or agents?',cat:'AI Depth',o:['We don\'t use AI','Basic chat only','Sometimes use advanced features','Regularly use code, vision, agents, or APIs']},
-  {q:'Describe your company\'s AI development team.',cat:'AI Team',o:['Just myself','2–4 people','5–9 people','10+ people']},
-  {q:'What is the most useful AI tool or program your team has created?',cat:'AI Build',o:['Nothing yet','Simple automations or prompts','Internal tools or workflows','Production apps or custom AI systems']},
-  {q:'How complex is your company\'s AI skill base — how well-trained are your bots or memory files?',cat:'AI Maturity',o:['No bots or memory files','Basic prompts, no memory','Some structured knowledge bases','Advanced memory, fine-tuning, or custom training']},
-  {q:'How is data entered into your main systems?',cat:'Data',o:['Typed in by hand','Copy-paste from templates','Partially automated','Fully automated pipelines']},
-  {q:'How are documents and reports created?',cat:'Reporting',o:['From scratch every time','Templates filled manually','Some fields auto-populate','Generated automatically']},
-  {q:'How do you track business performance?',cat:'Analytics',o:['Gut feeling','Check tools separately','Central dashboard','Real-time alerts and AI insights']}
-];
+// ═══ FREE ASSESSMENT ═══
+// The site is static, so requests post to a small endpoint on the ProctorPilot
+// server, which saves each one and emails it to pohm@intellismartgroup.com.
+const LEAD_API = 'https://proctorpilot.com/api/group-lead.php';
+const SYSTEM_CHOICES = ['NetSuite','QuickBooks','Salesforce','HubSpot','Excel or Google Sheets'];
+const CALL_BOOKING_URL = 'https://calendly.com/pohm-intellismartgroup/30min';
+let leadSource = '';
 
-const CAT_ICONS = {'AI Tools':'◈','AI Depth':'◇','AI Team':'▣','AI Build':'◆','AI Maturity':'◉',Data:'⎔',Reporting:'▤',Analytics:'◉'};
-const TOTAL = 8;
+function escHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 
-let aAnswers={}, aIdx=0, aLead={};
-
-function startAudit(){
-  aAnswers={}; aIdx=0; aLead={};
+function startAudit(source){
+  if(source) leadSource = source;
   document.getElementById('assessment').classList.add('open');
-  document.getElementById('aProgress').style.width='0%';
   document.body.style.overflow='hidden';
-  showAIntro();
+  showOfferForm();
 }
 
 function closeAudit(){
   document.getElementById('assessment').classList.remove('open');
   document.body.style.overflow='';
+  if(location.hash==='#assessment') history.replaceState(null,'',location.pathname+location.search);
 }
 
-function showAIntro(){
+function showOfferForm(){
   document.getElementById('aBody').innerHTML=`
-    <div style="text-align:center;max-width:420px">
-      <h2 style="font-family:'Instrument Serif',serif;font-size:40px;margin-bottom:20px;line-height:1.1;letter-spacing:-0.02em">How ready is your business for AI?</h2>
-      <p style="color:var(--text-secondary);font-size:18px;margin-bottom:48px">8 questions. 90 seconds. Personalized report.</p>
-      <button class="btn btn-primary" style="width:100%" onclick="showAQ()">Start Assessment →</button>
+    <div class="offer">
+      <div class="offer-label">Free, no obligation</div>
+      <h2 class="offer-title">Free Business Automation Opportunity Assessment</h2>
+      <p class="offer-lead">Tell us about one process that takes up your team's time. We'll review it and send you:</p>
+      <ul class="offer-list">
+        <li><strong>Your top three automation opportunities.</strong> Where automation would pay off first in your business.</li>
+        <li><strong>Estimated hours and costs saved.</strong> A plain estimate of the time and money each one could free up.</li>
+        <li><strong>A recommended approach and cost range.</strong> How we'd build it, with a preliminary price range.</li>
+      </ul>
+      <form id="offerForm" novalidate>
+        <label class="offer-field"><span>Company</span>
+          <input class="gate-input" id="oCompany" autocomplete="organization" maxlength="200"></label>
+        <label class="offer-field"><span>Work email</span>
+          <input class="gate-input" id="oEmail" type="email" autocomplete="email" maxlength="200"></label>
+        <div class="offer-field"><span>Systems you use</span>
+          <div class="offer-chips">${SYSTEM_CHOICES.map((s,i)=>`<label class="offer-chip"><input type="checkbox" value="${s}" id="oSys${i}"><span>${s}</span></label>`).join('')}</div>
+          <input class="gate-input" id="oSysOther" placeholder="Anything else? (optional)" maxlength="200"></div>
+        <label class="offer-field"><span>The process you want to improve</span>
+          <textarea class="gate-input offer-text" id="oProcess" rows="4" maxlength="3000" placeholder="For example: we type about 300 vendor invoices a month into NetSuite by hand."></textarea></label>
+        <label class="offer-check"><input type="checkbox" id="oCall"> I'd also like a 30-minute call to talk it through</label>
+        <input type="text" id="oWebsite" class="offer-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="gate-submit active" id="oSubmit" type="submit">Request my free assessment</button>
+        <p class="offer-error" id="oErr" role="alert"></p>
+        <p class="offer-fine">We reply from pohm@intellismartgroup.com. No mailing list, no spam.</p>
+      </form>
+      ${CALL_BOOKING_URL?`<p class="offer-alt">Prefer to talk first? <a href="${CALL_BOOKING_URL}" target="_blank" rel="noopener">Book a 30-minute call</a></p>`:''}
     </div>`;
+  document.getElementById('offerForm').addEventListener('submit', submitOffer);
+  document.getElementById('oCompany').focus();
 }
 
-let aMultiSel=[];
-
-function showAQ(){
-  if(aIdx>=TOTAL){showAGate();return;}
-  const q=QUESTIONS[aIdx];
-  document.getElementById('aProgress').style.width=(aIdx/TOTAL*100)+'%';
-  let h=`<div style="width:100%;max-width:480px">
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
-      <div class="assess-q-num">QUESTION ${aIdx+1} OF ${TOTAL}</div>
-      <div style="font-size:11px;color:var(--text-muted);letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--border);padding:3px 10px">${q.cat}</div>
-    </div>
-    <div class="assess-q-text">${q.q}</div>`;
-  if(q.multi){
-    aMultiSel = Array.isArray(aAnswers[aIdx]) ? [...aAnswers[aIdx]] : [];
-    h+=`<p style="font-size:13px;color:var(--text-muted);margin-bottom:12px">Select all that apply</p>`;
-    q.o.forEach((opt,i)=>{
-      const sel = aMultiSel.includes(i) ? ' selected' : '';
-      h+=`<button class="assess-option${sel}" id="mo${i}" onclick="aToggle(${i})"><strong>${String.fromCharCode(65+i)}</strong>${opt}</button>`;
-    });
-    h+=`<button class="btn btn-primary" style="width:100%;margin-top:12px" onclick="aMultiNext()">Next →</button>`;
-  } else {
-    q.o.forEach((opt,i)=>{
-      h+=`<button class="assess-option" onclick="aPick(${i})"><strong>${String.fromCharCode(65+i)}</strong>${opt}</button>`;
-    });
+async function submitOffer(ev){
+  ev.preventDefault();
+  const v=id=>document.getElementById(id).value.trim();
+  const err=document.getElementById('oErr');
+  const company=v('oCompany'), email=v('oEmail'), process=v('oProcess');
+  if(!company){err.textContent='Please enter your company.';return;}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){err.textContent='Please enter a valid work email.';return;}
+  if(!process){err.textContent='Please tell us which process you want to improve.';return;}
+  const systems=SYSTEM_CHOICES.filter((_,i)=>document.getElementById('oSys'+i).checked);
+  if(v('oSysOther')) systems.push(v('oSysOther'));
+  const wantsCall=document.getElementById('oCall').checked;
+  const btn=document.getElementById('oSubmit');
+  err.textContent=''; btn.disabled=true; btn.textContent='Sending...';
+  try{
+    const res=await fetch(LEAD_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+      company, email, systems: systems.join(', '), process, wants_call: wantsCall,
+      source: leadSource || 'homepage', website: v('oWebsite')
+    })});
+    const out=await res.json().catch(()=>({}));
+    if(!res.ok || !out.success) throw new Error(out.error||'');
+    showOfferThanks(email, wantsCall);
+  }catch(e){
+    btn.disabled=false; btn.textContent='Request my free assessment';
+    err.innerHTML=(e.message?escHtml(e.message)+' ':'That didn\'t go through. ')+'You can also email <a href="mailto:pohm@intellismartgroup.com">pohm@intellismartgroup.com</a>.';
   }
-  if(aIdx>0) h+=`<button class="assess-back" onclick="aIdx--;showAQ()">← Back</button>`;
-  h+='</div>';
-  document.getElementById('aBody').innerHTML=h;
 }
 
-function aToggle(i){
-  const none=0;
-  if(i===none){aMultiSel=[none];}
-  else{aMultiSel=aMultiSel.filter(x=>x!==none);const idx=aMultiSel.indexOf(i);if(idx>-1)aMultiSel.splice(idx,1);else aMultiSel.push(i);}
-  const q=QUESTIONS[aIdx];
-  q.o.forEach((_,j)=>{const el=document.getElementById('mo'+j);if(el){el.classList.toggle('selected',aMultiSel.includes(j));}});
-}
-
-function aMultiNext(){if(aMultiSel.length===0)return;aAnswers[aIdx]=aMultiSel;aIdx++;showAQ();}
-
-function aPick(v){aAnswers[aIdx]=v;aIdx++;showAQ();}
-
-function showAGate(){
-  document.getElementById('aProgress').style.width='85%';
+function showOfferThanks(email, wantsCall){
   document.getElementById('aBody').innerHTML=`
-    <div style="text-align:center;max-width:380px">
-      <h2 style="font-family:'Instrument Serif',serif;font-size:36px;margin-bottom:12px;line-height:1.15">Your results are ready</h2>
-      <p style="color:var(--text-secondary);font-size:17px;margin-bottom:40px">Enter your details to see your AI Readiness Score and personalized recommendations.</p>
-      <input class="gate-input" type="text" id="gN" placeholder="Full Name" oninput="gChk()">
-      <input class="gate-input" type="email" id="gE" placeholder="Work Email" oninput="gChk()">
-      <input class="gate-input" type="text" id="gC" placeholder="Company Name" oninput="gChk()">
-      <input class="gate-input" type="tel" id="gP" placeholder="Phone (optional)">
-      <button class="gate-submit" id="gB" onclick="gSubmit()">See My Results →</button>
-      <p style="margin-top:20px;font-size:13px;color:var(--text-muted)">We'll never spam you.</p>
+    <div class="offer" style="text-align:center">
+      <div class="offer-label">Request received</div>
+      <h2 class="offer-title">Thanks, we've got it</h2>
+      <p class="offer-lead">We'll review your process and reply to <strong>${escHtml(email)}</strong> from pohm@intellismartgroup.com${wantsCall?', and you can pick a time for your call below':''}.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:32px">
+        ${wantsCall&&CALL_BOOKING_URL?`<a class="btn btn-primary" href="${CALL_BOOKING_URL}" target="_blank" rel="noopener">Book your 30-minute call</a>`:''}
+        <a class="btn ${wantsCall&&CALL_BOOKING_URL?'btn-outline':'btn-primary'}" href="/demos/">Watch real demos</a>
+        <button class="btn btn-outline" type="button" onclick="closeAudit()">Back to site</button>
+      </div>
     </div>`;
 }
 
-function gChk(){
-  const n=document.getElementById('gN').value.trim(),e=document.getElementById('gE').value,c=document.getElementById('gC').value.trim();
-  document.getElementById('gB').className='gate-submit'+((n&&c&&/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e))?' active':'');
+// Open the form straight from a link: /#assessment or /?from=<page>#assessment
+function openAssessmentFromUrl(){
+  if(location.hash!=='#assessment') return;
+  const from=new URLSearchParams(location.search).get('from');
+  startAudit(from ? from.slice(0,300) : '');
 }
-
-function gSubmit(){
-  const n=document.getElementById('gN').value.trim(),e=document.getElementById('gE').value,c=document.getElementById('gC').value.trim();
-  if(!n||!c||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e))return;
-  const p=document.getElementById('gP').value.trim();
-  aLead={name:n,email:e,company:c,phone:p};
-  document.getElementById('aBody').innerHTML=`<div style="text-align:center"><div class="spinner"></div><p style="margin-top:24px;color:var(--text-secondary)">Analyzing your operations...</p></div>`;
-  setTimeout(showAResults,2000);
-}
-
-function showAResults(){
-  document.getElementById('aProgress').style.width='100%';
-  
-  // Score per category — each question normalized to 0-3
-  let sum=0, maxSum=0;
-  const catScores = QUESTIONS.map((q,i)=>{
-    let normalized;
-    if(q.multi){
-      const sel = Array.isArray(aAnswers[i]) ? aAnswers[i] : [];
-      const hasNone = sel.includes(0);
-      const toolCount = hasNone ? 0 : sel.length;
-      normalized = toolCount===0?0:toolCount<=1?1:toolCount<=3?2:3;
-    } else {
-      const v = aAnswers[i]||0;
-      const maxOpt = q.o.length-1;
-      normalized = Math.round((v/maxOpt)*3);
-    }
-    sum+=normalized;
-    maxSum+=3;
-    return {cat:q.cat, score:normalized, max:3, pct:Math.round(normalized/3*100)};
-  });
-
-  const score = Math.round((sum/maxSum)*100);
-  const tier = score<=20?{l:'Manual Operations',col:'#8B3A3A',msg:'Your business is running almost entirely on manual effort. There\'s significant opportunity to reclaim time and reduce errors.'}
-    :score<=45?{l:'Partially Automated',col:'#8B7D6B',msg:'You\'ve started automating, but key processes still depend on people doing repetitive work. The biggest gains are still ahead.'}
-    :score<=70?{l:'Smart Operations',col:'#4A6B5D',msg:'Your systems are working for you in some areas. Targeted automation in your weaker categories could unlock the next level.'}
-    :{l:'AI-Ready',col:'#4A6B5D',msg:'You\'re ahead of most businesses your size. Fine-tuning and AI integration could push you into a fully autonomous workflow.'};
-
-  // Find weakest and strongest
-  const sorted = [...catScores].sort((a,b)=>a.score-b.score);
-  const weakest = sorted.slice(0,3);
-  const strongest = sorted.slice(-2);
-
-  const r=80, circ=2*Math.PI*r;
-  const barColor = (pct)=> pct<=33?'#8B3A3A':pct<=66?'#8B7D6B':'#4A6B5D';
-
-  document.getElementById('aBody').innerHTML=`
-    <div style="width:100%;max-width:640px;padding:20px 0">
-
-      <!-- Header -->
-      <div style="text-align:center;margin-bottom:56px">
-        <div style="font-size:11px;font-weight:700;letter-spacing:0.15em;color:#8B7D6B;margin-bottom:16px">AI READINESS REPORT</div>
-        <h2 style="font-family:'Instrument Serif',serif;font-size:40px;margin-bottom:4px;letter-spacing:-0.02em">${aLead.company}</h2>
-        <p style="font-size:14px;color:var(--text-muted)">${aLead.name} · ${new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})}</p>
-      </div>
-
-      <!-- Score + Tier -->
-      <div style="display:grid;grid-template-columns:180px 1fr;gap:48px;align-items:center;padding:48px;border:1px solid var(--border);margin-bottom:32px">
-        <div class="score-ring">
-          <svg width="180" height="180">
-            <circle class="bg" cx="90" cy="90" r="${r}"/>
-            <circle class="fg" cx="90" cy="90" r="${r}" stroke="${tier.col}" stroke-dasharray="${circ}" stroke-dashoffset="${circ-circ*score/100}"/>
-          </svg>
-          <div class="score-num">${score}</div>
-        </div>
-        <div>
-          <div style="font-size:12px;font-weight:700;letter-spacing:0.1em;color:${tier.col};margin-bottom:8px">${tier.l.toUpperCase()}</div>
-          <p style="font-size:16px;color:var(--text-secondary);line-height:1.6;margin:0">${tier.msg}</p>
-        </div>
-      </div>
-
-      <!-- Category Breakdown -->
-      <div style="padding:40px;border:1px solid var(--border);margin-bottom:32px">
-        <div style="font-size:12px;font-weight:700;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:28px">CATEGORY BREAKDOWN</div>
-        ${catScores.map(c=>`
-          <div style="display:grid;grid-template-columns:100px 1fr 40px;gap:16px;align-items:center;margin-bottom:16px">
-            <div style="font-size:13px;font-weight:600;color:var(--text-primary)">${c.cat}</div>
-            <div style="height:8px;background:var(--border);position:relative;overflow:hidden">
-              <div style="position:absolute;left:0;top:0;bottom:0;width:${c.pct}%;background:${barColor(c.pct)};transition:width 1s cubic-bezier(0.23,1,0.32,1)"></div>
-            </div>
-            <div style="font-family:'Instrument Serif',serif;font-size:18px;color:${barColor(c.pct)};text-align:right">${c.pct}</div>
-          </div>
-        `).join('')}
-      </div>
-
-      <!-- Biggest Opportunities -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px">
-        <div style="padding:32px;border:1px solid var(--border)">
-          <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;color:#8B3A3A;margin-bottom:16px">BIGGEST OPPORTUNITIES</div>
-          ${weakest.map(c=>`
-            <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)">
-              <span style="font-size:14px;color:var(--text-primary)">${c.cat}</span>
-              <span style="font-family:'Instrument Serif',serif;font-size:16px;color:#8B3A3A">${c.pct}%</span>
-            </div>
-          `).join('')}
-        </div>
-        <div style="padding:32px;border:1px solid var(--border)">
-          <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;color:#4A6B5D;margin-bottom:16px">YOUR STRENGTHS</div>
-          ${strongest.map(c=>`
-            <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)">
-              <span style="font-size:14px;color:var(--text-primary)">${c.cat}</span>
-              <span style="font-family:'Instrument Serif',serif;font-size:16px;color:#4A6B5D">${c.pct}%</span>
-            </div>
-          `).join('')}
-        </div>
-      </div>
-
-      <!-- CTA -->
-      <div style="padding:48px;border:1px solid var(--border);text-align:center;margin-bottom:24px;background:rgba(51,51,52,0.02)">
-        <h3 style="font-family:'Instrument Serif',serif;font-size:28px;margin-bottom:8px">See what these numbers mean for ${aLead.company}</h3>
-        <p style="color:var(--text-secondary);margin-bottom:28px;font-size:15px">Send us a note and we'll set up a free 30-minute call to walk through your report and identify the highest-ROI automations.</p>
-        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-          <a href="mailto:pohm@intellismartgroup.com?subject=${encodeURIComponent('Strategy call request — ' + aLead.company)}" class="btn btn-primary">Request Your Strategy Call</a>
-        </div>
-      </div>
-
-      <button onclick="closeAudit()" style="display:block;margin:0 auto;padding:14px 28px;border:1px solid var(--border);background:none;color:var(--text-muted);font-size:14px;cursor:pointer;font-family:'Inter',sans-serif">Back to Site</button>
-    </div>`;
-
-  // ═══ Send report email via API ═══
-  const emailPayload = {
-    email: aLead.email,
-    contact: aLead.name,
-    company: aLead.company,
-    phone: aLead.phone || '',
-    score: score,
-    level: tier.l,
-    levelColor: tier.col,
-    industry: 'General',
-    opportunities: weakest.map(c => ({
-      title: c.cat + ' Automation',
-      description: 'Your ' + c.cat.toLowerCase() + ' processes scored ' + c.pct + '%. Automating this area would have the highest impact.',
-      impact: c.pct <= 33 ? 'High' : 'Med'
-    })),
-    summary: [
-      {label: 'Overall Score', value: score + '%'},
-      {label: 'Readiness Level', value: tier.l},
-      {label: 'Strongest Area', value: strongest[strongest.length-1].cat},
-      {label: 'Biggest Opportunity', value: weakest[0].cat}
-    ]
-  };
-  fetch('api/send-report.php', {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(emailPayload)
-  }).catch(function(){});
-}
+window.addEventListener('hashchange', openAssessmentFromUrl);
+openAssessmentFromUrl();
 
 
 // ═══ HERO WORD-BY-WORD ANIMATION ═══
@@ -2604,6 +2381,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   var prevBtn = document.getElementById('scenePrev');
   var nextBtn = document.getElementById('sceneNext');
   var pills = document.querySelectorAll('.scenario-pill');
+  if (!viewport || !prevBtn || !nextBtn) return; // slideshow lives on /demos/ now
 
   var currentKey = 're';
   var currentScene = 0;

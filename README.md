@@ -4,7 +4,7 @@ Static marketing site for `intellismartgroup.com`, adapted from the previous AI 
 
 ## Files
 
-- `index.html` - homepage and AI readiness assessment
+- `index.html` - homepage and the Free Business Automation Opportunity Assessment form (`/#assessment`)
 - `blog.html` - legacy blog URL that points to `/blog/`
 - `blog/index.html` - static blog index with crawlable article links
 - `blog/<slug>/index.html` - generated static article pages
@@ -12,8 +12,6 @@ Static marketing site for `intellismartgroup.com`, adapted from the previous AI 
 - `sitemap.xml` - search sitemap with every generated blog URL
 - `styles.css` - shared blog page styles
 - `images/` - visual assets used by the homepage
-- `api/send-report.php` - assessment email endpoint
-- `includes/email_helper.php` - SMTP helper configured by environment variables
 
 ## Updating blog pages
 
@@ -25,6 +23,6 @@ node scripts/generate-soro-blog.mjs
 
 The script rebuilds `/blog/`, every `/blog/<slug>/` page, legacy `blog.html`, and `sitemap.xml`.
 
-## Server Configuration
+## Assessment requests
 
-Set the variables from `.env.example` in the hosting environment before enabling the assessment email endpoint. Do not commit real SMTP credentials.
+GitHub Pages cannot run PHP, so the assessment form posts to `https://proctorpilot.com/api/group-lead.php` (repo `Intellismart-Group/proctorpilot`). That endpoint saves each request in the `group_leads` table and emails it to pohm@intellismartgroup.com. Link straight to the form with `/#assessment`, or `/?from=<page>#assessment` to record where the visitor came from.
