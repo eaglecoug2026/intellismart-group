@@ -527,3 +527,6 @@ footer {
 }
 .blog-cta-button:hover { background: #8B7D6B; }
 @media (max-width: 600px) { .blog-cta { padding: 24px; } }
+
+.blog-cta-more { margin: 20px 0 0 !important; font-size: 15px; }
+.blog-cta-more a { color: #4A6B5D; font-weight: 600; }

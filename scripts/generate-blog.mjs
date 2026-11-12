@@ -93,6 +93,11 @@ ${cards}
   });
 }
 
+// Articles about NetSuite or ERP work link to the NetSuite integration service page.
+function isNetSuiteArticle(article) {
+  return /netsuite|suitelet|\berp\b/i.test(`${article.slug} ${article.title} ${article.keyword || ""}`);
+}
+
 function articlePage(article) {
   const canonical = `${SITE_URL}/blog/${article.slug}/`;
   return layout({
@@ -118,6 +123,7 @@ ${article.content || ""}
         <h2>See what automation could save your business</h2>
         <p>Request a free Business Automation Opportunity Assessment. Tell us about one process and we'll send you your top three automation opportunities, the hours and costs they could save, and a recommended approach with a preliminary cost range.</p>
         <a class="blog-cta-button" href="/?from=${encodeURIComponent(`blog/${article.slug}`)}#assessment">Request your free assessment</a>
+        ${isNetSuiteArticle(article) ? `<p class="blog-cta-more">Working in NetSuite? <a href="/netsuite-integration/">See our NetSuite integration services</a>.</p>` : ""}
       </aside>
     </article>
   </main>`,
@@ -168,6 +174,11 @@ function sitemap(articles) {
     <loc>${SITE_URL}/</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>${SITE_URL}/netsuite-integration/</loc>
+    <lastmod>2026-11-12</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>${SITE_URL}/demos/</loc>

@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NetSuite Integration Consultant | Intellismart Group</title>
+  <meta name="description" content="NetSuite integration consultant for finance and operations teams. We connect NetSuite to the systems you already use, automate journal entries and reconciliations, and build Suitelet dashboards. Free assessment.">
+  <link rel="canonical" href="https://intellismartgroup.com/netsuite-integration/">
+  <meta property="og:title" content="NetSuite Integration Consultant | Intellismart Group">
+  <meta property="og:description" content="We connect NetSuite to the systems you already use, automate journal entries and reconciliations, and build Suitelet dashboards.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://intellismartgroup.com/netsuite-integration/">
+  <meta property="og:image" content="https://intellismartgroup.com/images/intellismart-og.png">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css?v=20261111-assessment">
+  <style>
+    .svc { max-width: 980px; margin: 0 auto; }
+    .svc-hero { max-width: 820px; margin: 0 auto 72px; text-align: center; }
+    .svc-hero h1 { font-size: clamp(40px, 7vw, 72px); }
+    .svc-hero p { color: var(--text-secondary); font-size: 19px; line-height: 1.7; margin-bottom: 32px; }
+    .svc-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .svc-section { padding: 56px 0; border-top: 1px solid var(--border); }
+    .svc-section h2 { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; font-size: clamp(30px, 4.5vw, 44px); letter-spacing: -0.02em; line-height: 1.1; margin: 0 0 14px; }
+    .svc-section > p { color: var(--text-secondary); font-size: 17px; line-height: 1.7; max-width: 720px; margin: 0 0 28px; }
+    .svc-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .svc-card { background: #fff; border: 1px solid var(--border); padding: 26px; }
+    .svc-card h3 { font-size: 18px; font-weight: 700; margin: 0 0 8px; color: var(--text-primary); }
+    .svc-card p { margin: 0; color: var(--text-secondary); font-size: 15px; line-height: 1.65; }
+    .svc-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .svc-chips span { padding: 9px 14px; border: 1px solid var(--border); background: #fff; font-size: 14px; color: var(--text-primary); }
+    .svc-proof { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 32px; background: #fff; border: 1px solid var(--border); padding: 36px; }
+    .svc-proof h3 { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; font-size: 30px; line-height: 1.15; margin: 0 0 12px; }
+    .svc-proof p { color: var(--text-secondary); font-size: 16px; line-height: 1.7; margin: 0 0 16px; }
+    .svc-stat { font-family: "Instrument Serif", Georgia, serif; font-size: 52px; color: var(--accent); line-height: 1; }
+    .svc-stat-label { font-size: 13px; color: var(--text-muted); margin-top: 6px; }
+    .svc-quote { border-left: 3px solid var(--accent); padding-left: 22px; align-self: center; }
+    .svc-quote p { font-style: italic; color: var(--text-primary); font-size: 17px; }
+    .svc-quote strong { display: block; font-size: 14px; color: var(--text-primary); font-style: normal; }
+    .svc-quote span { font-size: 13px; color: var(--text-muted); }
+    .svc-note { font-size: 13px; color: var(--text-muted); margin-top: 12px; }
+    .svc-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+    .svc-steps div { border-top: 2px solid var(--accent); padding-top: 16px; }
+    .svc-steps h3 { font-size: 17px; font-weight: 700; margin: 0 0 8px; }
+    .svc-steps p { margin: 0; color: var(--text-secondary); font-size: 15px; line-height: 1.6; }
+    .svc-faq details { border-bottom: 1px solid var(--border); padding: 18px 0; }
+    .svc-faq summary { cursor: pointer; font-weight: 600; font-size: 17px; color: var(--text-primary); list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+    .svc-faq summary::-webkit-details-marker { display: none; }
+    .svc-faq summary::after { content: '+'; color: var(--text-muted); font-weight: 400; }
+    .svc-faq details[open] summary::after { content: '\2212'; }
+    .svc-faq details p { color: var(--text-secondary); font-size: 16px; line-height: 1.7; margin: 12px 0 0; }
+    .svc-reading { columns: 2; column-gap: 32px; padding: 0; margin: 0; list-style: none; }
+    .svc-reading li { break-inside: avoid; padding: 8px 0; border-bottom: 1px solid var(--border); }
+    .svc-reading a { color: var(--text-primary); text-decoration: none; font-size: 15px; }
+    .svc-reading a:hover { color: var(--accent); }
+    .svc a.inline { color: var(--accent); font-weight: 600; }
+    @media (max-width: 760px) {
+      .svc-grid, .svc-proof { grid-template-columns: 1fr; }
+      .svc-steps { grid-template-columns: 1fr 1fr; }
+      .svc-reading { columns: 1; }
+      .svc-proof { padding: 24px; }
+    }
+    @media (max-width: 480px) { .svc-steps { grid-template-columns: 1fr; } }
+  </style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"NetSuite integration consulting","serviceType":"NetSuite integration","url":"https://intellismartgroup.com/netsuite-integration/","areaServed":{"@type":"Country","name":"United States"},"provider":{"@type":"Organization","name":"Intellismart Group","url":"https://intellismartgroup.com/","email":"pohm@intellismartgroup.com"},"description":"NetSuite integrations, SuiteScript development, automated journal entries and reconciliations, and Suitelet dashboards for finance and operations teams."}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do you write SuiteScript?","acceptedAnswer":{"@type":"Answer","text":"Yes. We build Suitelets, RESTlets, scheduled scripts and user event scripts in SuiteScript 2.x, and connect outside systems through NetSuite's REST and SOAP web services."}},{"@type":"Question","name":"Do we have to replace our other tools?","acceptedAnswer":{"@type":"Answer","text":"No. The point of an integration is to let each system do its job and stop people from retyping data between them. We connect what you already use."}},{"@type":"Question","name":"How long does a NetSuite integration take?","acceptedAnswer":{"@type":"Answer","text":"Most automations go live within 2 to 4 weeks. Complex, multi-system integrations usually take 6 to 8 weeks. Your free assessment gives you a specific timeline."}},{"@type":"Question","name":"What access do you need to our NetSuite account?","acceptedAnswer":{"@type":"Answer","text":"We work through a dedicated integration role with token-based authentication. You control the role's permissions and can revoke the tokens at any time."}},{"@type":"Question","name":"What does it cost?","acceptedAnswer":{"@type":"Answer","text":"Every project is scoped to your process. The free assessment includes a preliminary cost range, and you get a fixed quote before any work starts."}}]}</script>
+</head>
+<body>
+  <nav class="nav blog-nav">
+    <a class="logo" href="/">Intellismart Group</a>
+    <a class="back" href="/">Back to Home</a>
+  </nav>
+
+  <main class="blog-main">
+    <div class="svc">
+      <header class="svc-hero">
+        <div class="label">NetSuite integration</div>
+        <h1>NetSuite Integration Consultant for Finance and Operations Teams</h1>
+        <p>We connect NetSuite to the systems your team already uses, automate the journal entries and reconciliations your staff keys in by hand, and build Suitelet dashboards that show what's happening without another export to Excel.</p>
+        <div class="svc-row">
+          <a class="demos-btn demos-btn-primary" href="/?from=netsuite-integration#assessment">Get a Free Automation Assessment</a>
+          <a class="demos-btn demos-btn-outline" href="https://calendly.com/pohm-intellismartgroup/30min" target="_blank" rel="noopener">Book a 30-minute call</a>
+        </div>
+      </header>
+
+      <section class="svc-section">
+        <h2>What we build in NetSuite</h2>
+        <p>We know NetSuite from the accounting side as well as the code side, so we build around how your close, your approvals and your reporting actually work.</p>
+        <div class="svc-grid">
+          <div class="svc-card">
+            <h3>System-to-NetSuite integrations</h3>
+            <p>Data flows into NetSuite from your CRM, spend platform, payroll provider or spreadsheets on a schedule, matched to the right records, with no copy and paste.</p>
+          </div>
+          <div class="svc-card">
+            <h3>Automated journal entries</h3>
+            <p>Payroll, accruals, prepaid amortization and depreciation entries prepared from the source data, reviewed on screen, then posted to NetSuite in one step.</p>
+          </div>
+          <div class="svc-card">
+            <h3>Reconciliations</h3>
+            <p>Bank, credit card and balance sheet reconciliations that match transactions against the GL automatically and show only the items that need a person.</p>
+          </div>
+          <div class="svc-card">
+            <h3>Suitelet dashboards and reports</h3>
+            <p>Custom screens inside NetSuite, or outside it, that pull the numbers your team checks every day, so nobody rebuilds the same spreadsheet each week.</p>
+          </div>
+          <div class="svc-card">
+            <h3>SuiteScript development</h3>
+            <p>Suitelets, RESTlets, scheduled scripts and user event scripts in SuiteScript 2.x, written to stay within NetSuite's governance limits.</p>
+          </div>
+          <div class="svc-card">
+            <h3>NetSuite data syncs</h3>
+            <p>A copy of the NetSuite data you report on, kept current in your own database, so dashboards and other tools don't depend on saved-search exports.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="svc-section">
+        <h2>Systems we connect to NetSuite</h2>
+        <p>If it has an API or produces a file, we can usually get it into NetSuite cleanly. Systems we have connected include:</p>
+        <div class="svc-chips">
+          <span>Salesforce</span><span>Ramp</span><span>Rippling</span><span>Bank feeds</span><span>Excel and Google Sheets</span><span>Dropbox</span><span>Knack</span><span>Custom databases</span>
+        </div>
+      </section>
+
+      <section class="svc-section">
+        <h2>A NetSuite integration we built</h2>
+        <p>For a real estate and estate sales company, we built the data pipeline that feeds NetSuite and the dashboards their team runs on.</p>
+        <div class="svc-proof">
+          <div>
+            <h3>Full database-to-NetSuite integration</h3>
+            <p>A complete data pipeline feeding NetSuite ERP, with custom Suitelet dashboards for day-to-day operational visibility. Oracle had quoted $80,000 for the same scope.</p>
+            <div class="svc-stat">$80K</div>
+            <div class="svc-stat-label">Oracle quote avoided, before our own build fees</div>
+          </div>
+          <div class="svc-quote">
+            <p>&ldquo;We replaced an $80K Oracle engagement with a custom-built system that actually fits how our team works &mdash; delivered in a fraction of the time.&rdquo;</p>
+            <strong>True Legacy</strong>
+            <span>NetSuite ERP integration</span>
+          </div>
+        </div>
+        <p class="svc-note">Want to see one running? <a class="inline" href="/demos/">Watch the bank reconciliation demo</a>.</p>
+      </section>
+
+      <section class="svc-section">
+        <h2>How a NetSuite project runs</h2>
+        <p>Nothing posts to your books until you have seen it work on your own numbers.</p>
+        <div class="svc-steps">
+          <div><h3>Assessment</h3><p>We map the process, the systems and the accounts involved, and send you the opportunities, savings estimate and cost range.</p></div>
+          <div><h3>Build</h3><p>We build the integration or script against your NetSuite setup: your accounts, subsidiaries, classes and records.</p></div>
+          <div><h3>Prove it</h3><p>We run it on your real data and show you the results line by line before anything is posted.</p></div>
+          <div><h3>Run and support</h3><p>It goes live, we monitor it, and we fix it if a source system changes. Your team just uses it.</p></div>
+        </div>
+      </section>
+
+      <section class="svc-section svc-faq">
+        <h2>NetSuite integration questions</h2>
+        <details><summary>Do you write SuiteScript?</summary><p>Yes. We build Suitelets, RESTlets, scheduled scripts and user event scripts in SuiteScript 2.x, and connect outside systems through NetSuite's REST and SOAP web services.</p></details>
+        <details><summary>Do we have to replace our other tools?</summary><p>No. The point of an integration is to let each system do its job and stop people from retyping data between them. We connect what you already use.</p></details>
+        <details><summary>How long does a NetSuite integration take?</summary><p>Most automations go live within 2 to 4 weeks. Complex, multi-system integrations usually take 6 to 8 weeks. Your free assessment gives you a specific timeline.</p></details>
+        <details><summary>What access do you need to our NetSuite account?</summary><p>We work through a dedicated integration role with token-based authentication. You control the role's permissions and can revoke the tokens at any time.</p></details>
+        <details><summary>What does it cost?</summary><p>Every project is scoped to your process. The free assessment includes a preliminary cost range, and you get a fixed quote before any work starts.</p></details>
+      </section>
+
+      <section class="svc-section">
+        <h2>NetSuite reading</h2>
+        <p>Practical articles from our blog on NetSuite integrations, dashboards and scripting.</p>
+        <ul class="svc-reading">
+          <li><a href="/blog/netsuite-automation-consultant/">What a NetSuite Automation Consultant Should Fix</a></li>
+          <li><a href="/blog/netsuite-integration-versus-exports/">NetSuite Integration Versus Exports Compared</a></li>
+          <li><a href="/blog/how-to-connect-netsuite-databases/">How to Connect NetSuite Databases Without Rework</a></li>
+          <li><a href="/blog/netsuite-database-sync-example/">A NetSuite Database Sync Example That Holds Up</a></li>
+          <li><a href="/blog/playing-nice-with-netsuites-api-production/">Playing Nice With NetSuite's API in Production</a></li>
+          <li><a href="/blog/netsuite-custom-dashboard-development/">NetSuite Custom Dashboard Development That Pays</a></li>
+          <li><a href="/blog/netsuite-dashboard-example/">A NetSuite Dashboard Example That Drives Action</a></li>
+          <li><a href="/blog/how-to-build-suitelet-dashboards/">How to Build Suitelet Dashboards That Drive Action</a></li>
+          <li><a href="/blog/suitelet-reporting-example/">Suitelet Reporting Example for NetSuite Teams</a></li>
+          <li><a href="/blog/netsuite-suitelet-versus-saved-searches-compared/">NetSuite Suitelet Versus Saved Searches Compared</a></li>
+          <li><a href="/blog/erp-crm-integration-consulting/">ERP CRM Integration Consulting That Actually Works</a></li>
+          <li><a href="/blog/erp-data-governance-guide-growing-companies/">ERP Data Governance Guide for Growing Companies</a></li>
+        </ul>
+      </section>
+
+      <section class="demos-cta">
+        <h2>Find out what NetSuite could be doing for you</h2>
+        <p>Tell us about one process. We'll send your top three automation opportunities, the hours and costs they could save, and a recommended approach with a preliminary cost range.</p>
+        <div class="demos-cta-row">
+          <a class="demos-btn demos-btn-primary" href="/?from=netsuite-integration#assessment">Get a Free Automation Assessment</a>
+          <a class="demos-btn demos-btn-outline" href="https://calendly.com/pohm-intellismartgroup/30min" target="_blank" rel="noopener">Book a 30-minute call</a>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer>&copy; Intellismart Group &middot; <a href="/privacy/" style="color:inherit">Privacy policy</a></footer>
+</body>
+</html>
