@@ -530,3 +530,59 @@ footer {
 
 .blog-cta-more { margin: 20px 0 0 !important; font-size: 15px; }
 .blog-cta-more a { color: #4A6B5D; font-weight: 600; }
+
+/* Service pages (/netsuite-integration/, /accounting-automation/) */
+.svc { max-width: 980px; margin: 0 auto; }
+.svc-hero { max-width: 820px; margin: 0 auto 72px; text-align: center; }
+.svc-hero h1 { font-size: clamp(40px, 7vw, 72px); }
+.svc-hero p { color: var(--text-secondary); font-size: 19px; line-height: 1.7; margin-bottom: 32px; }
+.svc-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.svc-section { padding: 56px 0; border-top: 1px solid var(--border); }
+.svc-section h2 { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; font-size: clamp(30px, 4.5vw, 44px); letter-spacing: -0.02em; line-height: 1.1; margin: 0 0 14px; }
+.svc-section > p { color: var(--text-secondary); font-size: 17px; line-height: 1.7; max-width: 720px; margin: 0 0 28px; }
+.svc-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.svc-card { background: #fff; border: 1px solid var(--border); padding: 26px; }
+.svc-card h3 { font-size: 18px; font-weight: 700; margin: 0 0 8px; color: var(--text-primary); }
+.svc-card p { margin: 0; color: var(--text-secondary); font-size: 15px; line-height: 1.65; }
+.svc-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.svc-chips span { padding: 9px 14px; border: 1px solid var(--border); background: #fff; font-size: 14px; color: var(--text-primary); }
+.svc-proof { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 32px; background: #fff; border: 1px solid var(--border); padding: 36px; }
+.svc-proof h3 { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; font-size: 30px; line-height: 1.15; margin: 0 0 12px; }
+.svc-proof p { color: var(--text-secondary); font-size: 16px; line-height: 1.7; margin: 0 0 16px; }
+.svc-stat { font-family: "Instrument Serif", Georgia, serif; font-size: 52px; color: var(--accent); line-height: 1; }
+.svc-stat-label { font-size: 13px; color: var(--text-muted); margin-top: 6px; }
+.svc-quote { border-left: 3px solid var(--accent); padding-left: 22px; align-self: center; }
+.svc-quote p { font-style: italic; color: var(--text-primary); font-size: 17px; }
+.svc-quote strong { display: block; font-size: 14px; color: var(--text-primary); font-style: normal; }
+.svc-quote span { font-size: 13px; color: var(--text-muted); }
+.svc-note { font-size: 13px; color: var(--text-muted); margin-top: 12px; }
+.svc-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.svc-steps div { border-top: 2px solid var(--accent); padding-top: 16px; }
+.svc-steps h3 { font-size: 17px; font-weight: 700; margin: 0 0 8px; }
+.svc-steps p { margin: 0; color: var(--text-secondary); font-size: 15px; line-height: 1.6; }
+.svc-faq details { border-bottom: 1px solid var(--border); padding: 18px 0; }
+.svc-faq summary { cursor: pointer; font-weight: 600; font-size: 17px; color: var(--text-primary); list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+.svc-faq summary::-webkit-details-marker { display: none; }
+.svc-faq summary::after { content: '+'; color: var(--text-muted); font-weight: 400; }
+.svc-faq details[open] summary::after { content: '\2212'; }
+.svc-faq details p { color: var(--text-secondary); font-size: 16px; line-height: 1.7; margin: 12px 0 0; }
+.svc-reading { columns: 2; column-gap: 32px; padding: 0; margin: 0; list-style: none; }
+.svc-reading li { break-inside: avoid; padding: 8px 0; border-bottom: 1px solid var(--border); }
+.svc-reading a { color: var(--text-primary); text-decoration: none; font-size: 15px; }
+.svc-reading a:hover { color: var(--accent); }
+.svc a.inline { color: var(--accent); font-weight: 600; }
+@media (max-width: 760px) {
+  .svc-grid, .svc-proof { grid-template-columns: 1fr; }
+  .svc-steps { grid-template-columns: 1fr 1fr; }
+  .svc-reading { columns: 1; }
+  .svc-proof { padding: 24px; }
+}
+@media (max-width: 480px) { .svc-steps { grid-template-columns: 1fr; } }
+.svc-demos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.svc-demo { display: block; background: #fff; border: 1px solid var(--border); text-decoration: none; color: inherit; }
+.svc-demo img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-bottom: 1px solid var(--border); }
+.svc-demo span { display: block; padding: 18px 22px; }
+.svc-demo strong { display: block; font-size: 17px; color: var(--text-primary); margin-bottom: 6px; }
+.svc-demo em { font-style: normal; font-size: 15px; color: var(--text-secondary); line-height: 1.6; }
+.svc-demo:hover strong { color: var(--accent); }
+@media (max-width: 760px) { .svc-demos { grid-template-columns: 1fr; } }
