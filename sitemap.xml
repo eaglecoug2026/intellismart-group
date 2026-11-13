@@ -27,8 +27,13 @@
   </url>
   <url>
     <loc>https://intellismartgroup.com/blog/</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://intellismartgroup.com/blog/hiring-suitescript-developer-what-to-check/</loc>
+    <lastmod>2026-11-13</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://intellismartgroup.com/blog/ai-document-data-extraction-in-practice/</loc>
