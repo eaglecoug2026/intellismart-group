@@ -586,3 +586,8 @@ footer {
 .svc-demo em { font-style: normal; font-size: 15px; color: var(--text-secondary); line-height: 1.6; }
 .svc-demo:hover strong { color: var(--accent); }
 @media (max-width: 760px) { .svc-demos { grid-template-columns: 1fr; } }
+.svc-card-link { display: block; text-decoration: none; color: inherit; transition: border-color 0.2s; }
+.svc-card-link:hover { border-color: var(--accent); }
+.svc-card-link:hover h3 { color: var(--accent); }
+.svc-demos-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 700px) { .svc-demos-3 { grid-template-columns: 1fr; } }
