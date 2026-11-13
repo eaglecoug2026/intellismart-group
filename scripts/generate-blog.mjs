@@ -110,7 +110,7 @@ function serviceLink(article) {
   if (ACCOUNTING_ARTICLES.has(article.slug)) {
     return `<p class="blog-cta-more">Automating your close? <a href="/accounting-automation/">See our accounting automation services</a>.</p>`;
   }
-  return "";
+  return `<p class="blog-cta-more">Planning an automation project? <a href="/ai-automation-consulting/">See our AI automation consulting services</a>.</p>`;
 }
 
 // Articles about NetSuite or ERP work link to the NetSuite integration service page.
@@ -197,6 +197,11 @@ function sitemap(articles) {
   </url>
   <url>
     <loc>${SITE_URL}/netsuite-integration/</loc>
+    <lastmod>2026-11-12</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>${SITE_URL}/ai-automation-consulting/</loc>
     <lastmod>2026-11-12</lastmod>
     <priority>0.9</priority>
   </url>
