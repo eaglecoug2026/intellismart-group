@@ -596,3 +596,5 @@ footer {
 .demos-group-head h2 { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; font-size: clamp(30px, 4.5vw, 42px); letter-spacing: -0.02em; line-height: 1.1; margin: 0 0 10px; }
 .demos-group-head p { color: var(--text-secondary); font-size: 17px; line-height: 1.6; margin: 0; }
 .demos-group-head a { color: var(--accent); font-weight: 600; }
+@media (min-width: 861px) { .demos-grid.demos-grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; } .demos-grid-3 .demo-body { padding: 24px; } .demos-grid-3 .demo-title { font-size: 24px; } }
+.demo-desc a { color: var(--accent); font-weight: 600; }
