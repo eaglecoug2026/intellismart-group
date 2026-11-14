@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://intellismartgroup.com/sitemap.xml
