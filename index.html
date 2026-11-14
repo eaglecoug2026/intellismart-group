@@ -1394,9 +1394,13 @@ CHANGELOG — Intellismart Group Website v6
     }
     .demos-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 48px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 32px;
       margin-top: 56px;
+    }
+    @media (max-width: 1100px) and (min-width: 861px) {
+      .demos-grid .demo-body { padding: 22px; }
+      .demos-grid .demo-title { font-size: 22px; }
     }
     .demo-card {
       border: 1px solid var(--border);
