@@ -61,7 +61,7 @@ function blogIndex(articles) {
         </a>`).join("\n");
 
   return layout({
-    title: `${SITE_NAME} Blog | AI Readiness & Automation`,
+    title: `Automation Blog | ${SITE_NAME}`,
     description: "Practical guidance from Intellismart Group on AI readiness, automation, and putting AI to work in your business.",
     canonical: `${SITE_URL}/blog/`,
     body: `
@@ -115,13 +115,19 @@ function serviceLink(article) {
 
 // Articles about NetSuite or ERP work link to the NetSuite integration service page.
 function isNetSuiteArticle(article) {
-  return /netsuite|suitelet|\berp\b/i.test(`${article.slug} ${article.title} ${article.keyword || ""}`);
+  return /netsuite|suitelet|suitescript|\berp\b/i.test(`${article.slug} ${article.title} ${article.keyword || ""}`);
+}
+
+// Google shows about 60 characters of a title, so the site name is added only when it fits.
+function articleTitle(article) {
+  const withSite = `${article.title} | ${SITE_NAME}`;
+  return withSite.length <= 60 ? withSite : article.title;
 }
 
 function articlePage(article) {
   const canonical = `${SITE_URL}/blog/${article.slug}/`;
   return layout({
-    title: `${article.title} | ${SITE_NAME}`,
+    title: articleTitle(article),
     description: article.excerpt,
     canonical,
     ogType: "article",
