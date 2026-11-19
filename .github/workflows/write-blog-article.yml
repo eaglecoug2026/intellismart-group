@@ -52,6 +52,9 @@ jobs:
       - name: Rebuild the blog pages
         run: node scripts/generate-blog.mjs
 
+      - name: Make jpg covers for social
+        run: sh scripts/make-social-jpgs.sh
+
       - name: Publish or open for review
         id: publish
         env:
@@ -87,3 +90,14 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh api -X POST "repos/${{ github.repository }}/pages/builds"
+
+      - name: Post the article to Facebook and Instagram
+        if: steps.publish.outputs.published == 'true'
+        env:
+          SITE_URL: https://intellismartgroup.com
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SLUG: ${{ steps.write.outputs.slug }}
+        run: node scripts/social-post.mjs "$SLUG"

@@ -1,0 +1,37 @@
+name: Post an article to Facebook and Instagram
+
+# Posts one article that is already live on the site to the Facebook Page and
+# to the Instagram account linked to it. The blog writer does this by itself
+# for every new article; this is for posting an older one by hand, and for
+# reading the captions without posting anything (leave "Post it for real"
+# unticked).
+
+on:
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: "The article's slug, e.g. automate-payroll-journal-entries"
+        required: true
+      post_for_real:
+        description: "Post it for real (otherwise only the captions are shown)"
+        type: boolean
+        default: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Post the article
+        env:
+          SITE_URL: https://intellismartgroup.com
+          FB_PAGE_ID: ${{ inputs.post_for_real && secrets.FB_PAGE_ID || '' }}
+          FB_PAGE_TOKEN: ${{ inputs.post_for_real && secrets.FB_PAGE_TOKEN || '' }}
+          IG_USER_ID: ${{ inputs.post_for_real && secrets.IG_USER_ID || '' }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SLUG: ${{ inputs.slug }}
+        run: node scripts/social-post.mjs "$SLUG"
