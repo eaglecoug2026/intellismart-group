@@ -48,7 +48,11 @@ const dryRun = !FB_PAGE_ID || !FB_PAGE_TOKEN || !IG_USER_ID;
 
 const article = JSON.parse(await readFile(`${ARTICLES_DIR}/${slug}.json`, "utf8"));
 const articleUrl = `${SITE_URL}/blog/${slug}/`;
-const imageUrl = `${SITE_URL}/blog-images/${slug}.jpg`;
+// Cloudflare sits in front of one of the two sites, and it will cache a 404
+// for hours if anything asks for the picture before the site has finished
+// deploying. A fresh number on the end makes a different cache key every
+// time, so both the check below and Instagram's own fetch reach the real file.
+const imageUrl = `${SITE_URL}/blog-images/${slug}.jpg?v=${Date.now()}`;
 
 // ---------------------------------------------------------------- the caption
 
@@ -128,9 +132,10 @@ async function writeCaptions() {
 // ------------------------------------------------------- waiting for the site
 
 // Instagram fetches the picture from the live site, so the site has to have
-// finished deploying before we post. Checks for up to 15 minutes.
+// finished deploying before we post. One of the two sites is pulled onto its
+// server by a job that runs every half hour, so this waits up to 40 minutes.
 async function waitForImage(url) {
-  const deadline = Date.now() + 15 * 60 * 1000;
+  const deadline = Date.now() + 40 * 60 * 1000;
   let waited = false;
   while (Date.now() < deadline) {
     try {
