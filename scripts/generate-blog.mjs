@@ -212,6 +212,11 @@ function sitemap(articles) {
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>${SITE_URL}/outsourced-accounting/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>${SITE_URL}/accounting-automation/</loc>
     <lastmod>2026-11-12</lastmod>
     <priority>0.9</priority>
