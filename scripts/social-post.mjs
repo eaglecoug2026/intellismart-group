@@ -170,13 +170,39 @@ async function graph(path, params) {
   return body;
 }
 
+// A re-run must not post the same article to the Page twice, so look for a
+// recent Page post that already links this article.
+async function alreadyOnFacebook() {
+  try {
+    const response = await fetch(
+      `${GRAPH}/${FB_PAGE_ID}/posts?fields=message&limit=50&access_token=${encodeURIComponent(FB_PAGE_TOKEN)}`,
+    );
+    const body = await response.json();
+    return (body.data || []).some((post) => (post.message || "").includes(`/blog/${slug}/`));
+  } catch {
+    return false;
+  }
+}
+
 async function postToFacebook(message) {
   const result = await graph(`${FB_PAGE_ID}/photos`, { url: imageUrl, message, published: "true" });
   return result.post_id || result.id;
 }
 
 async function postToInstagram(caption) {
-  const container = await graph(`${IG_USER_ID}/media`, { image_url: imageUrl, caption });
+  // Instagram's picture fetch sometimes fails right after the picture goes
+  // live ("Only photo or video can be accepted", 11/23), so try a few times.
+  let container;
+  for (let attempt = 1; ; attempt++) {
+    try {
+      container = await graph(`${IG_USER_ID}/media`, { image_url: imageUrl, caption });
+      break;
+    } catch (error) {
+      if (attempt >= 3) throw error;
+      console.log(`Instagram try ${attempt} failed (${error.message}); trying again in a minute.`);
+      await new Promise((resolve) => setTimeout(resolve, 60000));
+    }
+  }
 
   // Instagram downloads the picture before it will publish, so wait for the
   // container to be ready rather than publishing straight away.
@@ -216,8 +242,12 @@ if (!(await waitForImage(imageUrl))) {
 let failed = false;
 
 try {
-  const postId = await postToFacebook(captions.facebook);
-  console.log(`Posted to the Facebook Page: ${postId}`);
+  if (await alreadyOnFacebook()) {
+    console.log("Already on the Facebook Page, so not posted there again.");
+  } else {
+    const postId = await postToFacebook(captions.facebook);
+    console.log(`Posted to the Facebook Page: ${postId}`);
+  }
 } catch (error) {
   console.error(`Facebook refused the post: ${error.message}`);
   failed = true;
