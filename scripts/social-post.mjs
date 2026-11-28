@@ -22,7 +22,7 @@
 // With FB_PAGE_ID, FB_PAGE_TOKEN and IG_USER_ID missing it prints the captions
 // and stops, so the captions can be checked without posting anything.
 
-import { readFile } from "node:fs/promises";
+import { readFile, stat } from "node:fs/promises";
 
 const GRAPH = "https://graph.facebook.com/v27.0";
 const ARTICLES_DIR = "blog-content/articles";
@@ -134,13 +134,21 @@ async function writeCaptions() {
 // Instagram fetches the picture from the live site, so the site has to have
 // finished deploying before we post. One of the two sites is pulled onto its
 // server by a job that runs every half hour, so this waits up to 40 minutes.
+// "Live" means the site hands back the very jpg this run made (an image, the
+// same size as the file here), not just an OK answer: on 11/27 an OK came back
+// before the staffing server had the picture, and both posts were refused.
 async function waitForImage(url) {
+  const localSize = await stat(`blog-images/${slug}.jpg`).then((info) => info.size, () => 0);
   const deadline = Date.now() + 40 * 60 * 1000;
   let waited = false;
   while (Date.now() < deadline) {
     try {
-      const response = await fetch(url, { method: "HEAD", redirect: "follow" });
-      if (response.ok) {
+      const response = await fetch(url, { redirect: "follow", cache: "no-store" });
+      const type = response.headers.get("content-type") || "";
+      const bytes = response.ok ? new Uint8Array(await response.arrayBuffer()) : new Uint8Array();
+      const isJpeg = bytes[0] === 0xff && bytes[1] === 0xd8;
+      const rightFile = localSize ? bytes.length === localSize : bytes.length > 1000;
+      if (response.ok && type.startsWith("image/") && isJpeg && rightFile) {
         if (waited) console.log("The cover picture is live.");
         return true;
       }
